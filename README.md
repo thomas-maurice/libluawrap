@@ -8,6 +8,6 @@ with this language without caring of the technical part of the C API
 not quite familiar with it).
 
 ## Documentation
-The documentation is availiable [here](http://timmy.polytech-lille.net/libluawrap)
+The documentation is availiable [here](http://timmy.polytech-lille.net/?q=libluawrap)
 and will be soon be put in a dedicated folder in a PDF or LaTeX format in the source
 directory. Moreover a small manpage is located in man/
