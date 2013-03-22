@@ -1,0 +1,10 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libluawrap
+Description: A simple C++ Lua class wrapper/writer
+Version: 0.2
+Libs: -L${libdir} -lluawrap -llua5.2
+Cflags: -I${includedir} -I${includedir}/libluawrap

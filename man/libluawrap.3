@@ -1,0 +1,80 @@
+.TH libluawrap 3 "Thomas MAURICE - Janvier 2013" "Version 0.2" "libluawrap - C++ Lua wrapper"
+
+.SH NAME
+	Libluawrap is a simple C++ Lua wrapper to easien the creation of classes/tables
+into Lua from C++ in the user-coded C modules. Its avoids the call to the ugly API
+functions, you don't have to know precisely how to register variables, tables and
+metatables, you don't have to manage the stack to register the variables.
+The module defines a few classes :
+.IP LuaTable
+Implements Lua tables
+.IP LuaNumber
+Implements numbers
+.IP LuaFunction
+Wraps functions, they have to be like
+.BR "int" " function(" "lua_State*" " L)"
+.IP LuaString
+Implements Lua string
+.IP LuaBoolean
+The booleans
+.IP "And finally LuaNil"
+  The nil type
+
+.SH USING THE LIBRARY
+.SS INCLUDES
+  You have to include the header
+.I <libluawrap.h>
+to use the library.
+
+.SS COMPILING
+  Link
+.I -lluawrap
+and
+.I -llua5.2
+to your executable when you compile. A pkg-config file will be provided later on.
+
+.SH BUGS
+None known yet.
+
+.SH OVERVIEW
+All the declaration are quite instinctives, for instance, if you want to create a
+LuaString object, just call :
+.br
+.B "LuaString"
+s = LuaString("MyString")
+.br
+And for a number :
+.br
+.B "LuaNumber"
+s = LuaNumber(42)
+.br
+And it's the same for the LuaBoolean and LuaNil types. Those types all have some
+set() and get() methods, which take as an input the corresponding C++ type. For
+exemple
+.br
+ 
+.br
+.B LuaBool
+b = LuaBool(false);
+.BR "// b is false now"
+.br
+b.set(true)
+.BR "// Now it's true !"
+.br
+ 
+.br
+Those type also have the push() method which pushes the value onto the top of the stack
+and the
+.BR "void" " globalize(" "LuaState"  "*L, " "string" " name)"
+method which globalizes the variable within the Lua
+context with the given name. Note that push and globalize also work on LuaTable
+and LuaFunction classes.
+
+
+.SH SEE ALSO
+.BR lua (1)
+.BR lua5.2 (1)
+
+.SH AUTHORS
+Thomas Maurice
+.I <thomas.maurice@polytech-lille.net>

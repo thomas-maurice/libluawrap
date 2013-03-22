@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "Creating symlinks..."
+
+libdir=/usr/local/lib
+libname=libluawrap.so
+major=0
+minor=2
+
+ln -sf $libdir/$libname.$major.$minor $libdir/$libname.$major
+ln -sf $libdir/$libname.$major $libdir/$libname
+

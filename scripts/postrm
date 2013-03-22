@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Cleaning symlinks..."
+
+libdir=/usr/local/lib
+libname=libluawrap.so
+major=0
+minor=2
+
+rm -f $libdir/$libname.$major*
+rm -f $libdir/$libname
