@@ -27,7 +27,7 @@ extern "C"
 
 #include <iostream>
 #include <sstream>
-
+#include <cstdlib>
 #include <libluawrap.h>
 
 using namespace std;
@@ -38,8 +38,14 @@ int testfunc(lua_State *L)
   return 0;
 }
 
-int main()
+int main(int argc, char** argv)
 {
+		if(argc != 2) {
+			cout << "Syntax : " << argv[0] << " <testscript.lua>" <<endl;
+			return EXIT_FAILURE;
+		}
+		
+		
     print_luawrap_version();
 
     lua_State * l = luaL_newstate();
@@ -79,7 +85,7 @@ int main()
     table.addIndex_String(1, "foobar");
     table.globalize(l, "thomas");
     
-    int erred = luaL_dofile(l, "test.lua");
+    int erred = luaL_dofile(l, argv[1]);
     if(erred)
         std::cout << "Lua error: " << luaL_checkstring(l, -1) << std::endl;
   
