@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<makedeb>
+  <control>
+	  <version>0.2</version>
+	  <name>libluawrap</name>
+	  <maintener>Thomas Maurice</maintener>
+	  <mail>thomas.maurice@polytech-lille.fr</mail>
+	  <desc>Simple C++ Lua wrapper</desc>
+	  <homepage>None</homepage>
+	  <category>3</category>
+	  <deps>
+	  	<package>bash</package>
+		  <package>lua5.2</package>
+		  <package>liblua5.2-0</package>
+	  </deps>
+	  
+	  <postinst>scripts/postinst</postinst>
+	  <postrm>scripts/postrm</postrm>
+  </control>
+
+  <dirs>
+	  <dir>/usr/local/lib</dir>
+	  <dir>/usr/local/include</dir>
+	  <dir>/usr/local/lib/pkgconfig</dir>
+	  <dir>/usr/local/man/man3/</dir>
+  </dirs>
+
+  <files>
+    <file if="build/lib/libluawrap.so.0.2" of="/usr/local/lib" />
+    <file if="include/libluawrap" of="/usr/local/include" />
+    <file if="include/libluawrap.h" of="/usr/local/include" />
+    <file if="pkgconfig/libluawrap.pc" of="/usr/local/lib/pkgconfig" />
+	  <file if="man/libluawrap.3.gz" of="/usr/local/man/man3/" />
+  </files>
+</makedeb>

@@ -1,5 +1,13 @@
 # libluawrap
 
+## Compile
+Create a build/ directory
+Get in there
+Type ```cmake ..```
+Type ```make```
+???
+Profit :)
+
 ## Introduction
 **libluawrap** is a C++ class used to create easily tables, variables and
 classes in C++ and export them to Lua to create modules and/or interfaces
