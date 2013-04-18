@@ -39,6 +39,7 @@ extern "C"
 #include "libluawrap/lua_string.h"
 #include "libluawrap/lua_nil.h"
 #include "libluawrap/lua_wrap.h"
+#include "libluawrap/lua_table_element.h"
 
 void print_luawrap_version();
 

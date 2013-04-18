@@ -50,6 +50,7 @@ class DllExport LuaBoolean;
 class DllExport LuaFunction;
 class DllExport LuaString;
 class DllExport LuaNil;
+class DllExport LuaTableElement;
 
 struct LuaTableField_Nil {
   std::string name;

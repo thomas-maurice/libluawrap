@@ -27,6 +27,7 @@ class LuaWrap
   public:
     LuaWrap() {};
     static bool isNil(lua_State* L, std::string varname);
+    static LuaTableElement readTableFromLua(lua_State *L, std::string var);
 };
 
 #endif

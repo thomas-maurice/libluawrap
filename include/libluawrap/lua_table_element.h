@@ -21,15 +21,62 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #ifndef LUA_TABLE_ELEMENT_WRAP
 #define LUA_TABLE_ELEMENT_WRAP
 #include <lua_defs.h>
+
+#include <lua_number.h>
+#include <lua_string.h>
+#include <lua_bool.h>
+#include <lua_nil.h>
+
 #include <vector>
+
+enum {NUMBER, STRING, BOOLEAN, NIL, TABLE};
+
 
 class LuaTableElement
 {
   public:
     LuaTableElement();
-  
+    LuaTableElement(std::string pkey);
+    LuaTableElement(int pindex);
+    
+    void dump();
+    
+    void setIndex(int i);
+    void setKey(std::string k);
+    
+    void addChildren(LuaTableElement e);
+    
+    void set(LuaNumber num);
+    void set(LuaString str);
+    void set(LuaBoolean b);
+    void set(LuaNil n);
+    
+    void set(double num);
+    void set(int num);
+    void set(float num);
+    void set(std::string str);
+    void set(char* str);
+    void set(bool b);
+    
+    void push(lua_State* L);
+    void globalize(lua_State* L);
+    
+    int getType();
+    std::string getKey();
+    int getIndex();
+    bool getIsInArray();
+    
   private:
-  	std::vector<LuaTableElement> children;
+    std::vector<LuaTableElement> children;
+    std::string key;
+    int index;
+    bool is_in_array;
+    
+    int type;
+    
+    double double_value;
+    bool bool_value;
+    std::string string_value;
 };
 
 #endif
