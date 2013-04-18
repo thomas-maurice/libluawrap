@@ -28,6 +28,8 @@ extern "C"
   #include <lualib.h>
 }
 
+#define LIBLUAWRAP_VERSION 0.3
+
 #include "libluawrap/lua_defs.h"
 #include "libluawrap/lua_debug.h"
 #include "libluawrap/lua_table.h"

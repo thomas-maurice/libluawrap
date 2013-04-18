@@ -24,5 +24,5 @@ using namespace std;
 
 void print_luawrap_version()
 {
-  cout << "libluawrap par Thomas Maurice v0.2" << endl;
+  cout << "libluawrap by Thomas Maurice v0.3" << endl;
 }
