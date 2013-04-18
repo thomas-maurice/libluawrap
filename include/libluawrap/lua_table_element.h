@@ -51,6 +51,8 @@ class LuaTableElement
     void set(LuaBoolean b);
     void set(LuaNil n);
     
+    void setNil();
+    
     void set(double num);
     void set(int num);
     void set(float num);
@@ -58,13 +60,24 @@ class LuaTableElement
     void set(char* str);
     void set(bool b);
     
+    std::string toString();
+    double toNumber();
+    bool toBoolean();
+    
     void push(lua_State* L);
     void globalize(lua_State* L);
     
     int getType();
+    bool isNil();
     std::string getKey();
     int getIndex();
     bool getIsInArray();
+    
+    std::vector<LuaTableElement> getChildren();
+    
+    bool elementExists(std::string element);
+    bool elementIsNil(std::string element);
+    LuaTableElement *getElement(std::string element);
     
   private:
     std::vector<LuaTableElement> children;

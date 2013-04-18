@@ -103,6 +103,7 @@ int main(int argc, char** argv)
   LuaTableElement conf= LuaWrap::readTableFromLua(l, "conf");
   conf.dump();
   cout << endl;
+  
     /*if(num.getFromLua(l, "fooint"))
       cout << num.getDouble() << endl;
     else

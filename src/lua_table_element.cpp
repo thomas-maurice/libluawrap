@@ -123,6 +123,114 @@ void LuaTableElement::setKey(std::string k) {
   is_in_array = false;
 }
 
+std::vector<LuaTableElement> LuaTableElement::getChildren() {
+  return children;
+}
+
+bool LuaTableElement::isNil() {
+  if(type == NIL) {
+    return true;
+  }
+  
+  return false;
+}
+
+std::string LuaTableElement::toString() {
+  if(type == STRING)
+    return string_value;
+  
+  return "";
+}
+
+double LuaTableElement::toNumber() {
+  if(type == NUMBER)
+    return double_value;
+  return 0;
+}
+
+bool LuaTableElement::toBoolean() {
+  if(type == BOOLEAN)
+    return bool_value;
+  return false;
+}
+
+bool LuaTableElement::elementIsNil(std::string element) {
+  string cur_elem;
+  string sub_elem;
+  
+  if(element.find(".") == string::npos) {
+    sub_elem = "";
+    cur_elem = element;
+  } else {
+    int p = element.find(".");
+    cur_elem = element.substr(0, p);
+    sub_elem = element.substr(p+1, element.length()-1);
+  }
+  
+  if(cur_elem == "" && type == NIL)
+    return true;
+  else
+    return false;
+  
+  for(unsigned int i = 0; i < children.size(); i++) {
+    if(cur_elem == children.at(i).getKey()) {
+      return children.at(i).elementExists(sub_elem);
+    }
+  }
+  
+  return true;
+}
+
+bool LuaTableElement::elementExists(std::string element) {
+  string cur_elem;
+  string sub_elem;
+  
+  if(element.find(".") == string::npos) {
+    sub_elem = "";
+    cur_elem = element;
+  } else {
+    int p = element.find(".");
+    cur_elem = element.substr(0, p);
+    sub_elem = element.substr(p+1, element.length()-1);
+  }
+  
+  if(cur_elem == "")
+    return true;
+  
+  for(unsigned int i = 0; i < children.size(); i++) {
+    if(cur_elem == children.at(i).getKey()) {
+      return children.at(i).elementExists(sub_elem);
+    }
+  }
+  
+  return false;
+}
+
+LuaTableElement* LuaTableElement::getElement(std::string element) {
+  string cur_elem;
+  string sub_elem;
+  
+  if(element.find(".") == string::npos) {
+    sub_elem = "";
+    cur_elem = element;
+  } else {
+    int p = element.find(".");
+    cur_elem = element.substr(0, p);
+    sub_elem = element.substr(p+1, element.length()-1);
+  }
+  
+  if(cur_elem == "")
+    return this;
+  
+  for(unsigned int i = 0; i < children.size(); i++) {
+    if(cur_elem == children.at(i).getKey()) {
+      return children.at(i).getElement(sub_elem);
+    }
+  }
+  
+  return NULL;
+}
+
 void LuaTableElement::dump() {
   if(type == TABLE)
   {
