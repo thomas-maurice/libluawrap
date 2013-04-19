@@ -68,9 +68,20 @@ ADD_EXECUTABLE(
 	luawrap_test/main.cpp
 )
 
+ADD_EXECUTABLE(
+	readtable
+	luawrap_test/readtable.cpp
+)
+
 # Link la lib dynamique et Lua au programme de test
 TARGET_LINK_LIBRARIES(
 	luawrap_test
+	luawrap
+	${LUA_LIBRARIES}
+)
+# Link la lib dynamique et Lua au programme de test
+TARGET_LINK_LIBRARIES(
+	readtable
 	luawrap
 	${LUA_LIBRARIES}
 )

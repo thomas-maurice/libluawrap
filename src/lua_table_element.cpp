@@ -154,6 +154,10 @@ bool LuaTableElement::toBoolean() {
   return false;
 }
 
+void LuaTableElement::setNil() {
+  type = NIL;
+}
+
 bool LuaTableElement::elementIsNil(std::string element) {
   string cur_elem;
   string sub_elem;
@@ -167,18 +171,136 @@ bool LuaTableElement::elementIsNil(std::string element) {
     sub_elem = element.substr(p+1, element.length()-1);
   }
   
-  if(cur_elem == "" && type == NIL)
-    return true;
-  else
-    return false;
+  if(cur_elem == "") {
+    if(type == NIL)
+      return true;
+    else
+      return false;
+  }
   
   for(unsigned int i = 0; i < children.size(); i++) {
     if(cur_elem == children.at(i).getKey()) {
-      return children.at(i).elementExists(sub_elem);
+      return children.at(i).elementIsNil(sub_elem);
     }
   }
-  
+
   return true;
+}
+
+bool LuaTableElement::elementIsString(std::string element) {
+  string cur_elem;
+  string sub_elem;
+  
+  if(element.find(".") == string::npos) {
+    sub_elem = "";
+    cur_elem = element;
+  } else {
+    int p = element.find(".");
+    cur_elem = element.substr(0, p);
+    sub_elem = element.substr(p+1, element.length()-1);
+  }
+  
+  if(cur_elem == "") {
+    if(type == STRING)
+      return true;
+    else
+      return false;
+  }
+  
+  for(unsigned int i = 0; i < children.size(); i++) {
+    if(cur_elem == children.at(i).getKey()) {
+      return children.at(i).elementIsString(sub_elem);
+    }
+  }
+
+  return false;
+}
+
+bool LuaTableElement::elementIsNumber(std::string element) {
+  string cur_elem;
+  string sub_elem;
+  
+  if(element.find(".") == string::npos) {
+    sub_elem = "";
+    cur_elem = element;
+  } else {
+    int p = element.find(".");
+    cur_elem = element.substr(0, p);
+    sub_elem = element.substr(p+1, element.length()-1);
+  }
+  
+  if(cur_elem == "") {
+    if(type == NUMBER)
+      return true;
+    else
+      return false;
+  }
+  
+  for(unsigned int i = 0; i < children.size(); i++) {
+    if(cur_elem == children.at(i).getKey()) {
+      return children.at(i).elementIsNumber(sub_elem);
+    }
+  }
+
+  return false;
+}
+
+bool LuaTableElement::elementIsBoolean(std::string element) {
+  string cur_elem;
+  string sub_elem;
+  
+  if(element.find(".") == string::npos) {
+    sub_elem = "";
+    cur_elem = element;
+  } else {
+    int p = element.find(".");
+    cur_elem = element.substr(0, p);
+    sub_elem = element.substr(p+1, element.length()-1);
+  }
+  
+  if(cur_elem == "") {
+    if(type == BOOLEAN)
+      return true;
+    else
+      return false;
+  }
+  
+  for(unsigned int i = 0; i < children.size(); i++) {
+    if(cur_elem == children.at(i).getKey()) {
+      return children.at(i).elementIsBoolean(sub_elem);
+    }
+  }
+
+  return false;
+}
+
+bool LuaTableElement::elementIsTable(std::string element) {
+  string cur_elem;
+  string sub_elem;
+  
+  if(element.find(".") == string::npos) {
+    sub_elem = "";
+    cur_elem = element;
+  } else {
+    int p = element.find(".");
+    cur_elem = element.substr(0, p);
+    sub_elem = element.substr(p+1, element.length()-1);
+  }
+  
+  if(cur_elem == "") {
+    if(type == TABLE)
+      return true;
+    else
+      return false;
+  }
+  
+  for(unsigned int i = 0; i < children.size(); i++) {
+    if(cur_elem == children.at(i).getKey()) {
+      return children.at(i).elementIsTable(sub_elem);
+    }
+  }
+
+  return false;
 }
 
 bool LuaTableElement::elementExists(std::string element) {
@@ -250,6 +372,9 @@ void LuaTableElement::dump() {
         break;
       case STRING:
         cout << " String:" << key << "=\"" << string_value << "\"";
+        break;
+    case NIL:
+        cout << " Nil:" << key;
         break;
     }
   }

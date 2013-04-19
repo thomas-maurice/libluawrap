@@ -76,7 +76,13 @@ class LuaTableElement
     std::vector<LuaTableElement> getChildren();
     
     bool elementExists(std::string element);
+    
     bool elementIsNil(std::string element);
+    bool elementIsString(std::string element);
+    bool elementIsNumber(std::string element);
+    bool elementIsBoolean(std::string element);
+    bool elementIsTable(std::string element);
+    
     LuaTableElement *getElement(std::string element);
     
   private:

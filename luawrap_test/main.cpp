@@ -85,26 +85,11 @@ int main(int argc, char** argv)
     table.addIndex_String(1, "foobar");
     table.globalize(l, "thomas");
     
-    // Test
-    LuaTableElement te("te");
-    LuaTableElement num2("num");
-    num2.set(42);
-    LuaTableElement el("el");
-    LuaTableElement el2("el2");
-    el.addChildren(el2);
-    el.addChildren(num2);
-    te.addChildren(el);
-    te.globalize(l);
-    
     int erred = luaL_dofile(l, argv[1]);
     if(erred)
         std::cout << "Lua error: " << luaL_checkstring(l, -1) << std::endl;
   
-  LuaTableElement conf= LuaWrap::readTableFromLua(l, "conf");
-  conf.dump();
-  cout << endl;
-  
-    /*if(num.getFromLua(l, "fooint"))
+    if(num.getFromLua(l, "fooint"))
       cout << num.getDouble() << endl;
     else
       cout << "Can't get" << endl;
@@ -117,7 +102,7 @@ int main(int argc, char** argv)
       cout << "Can't get" << endl;
     
     if(LuaWrap::isNil(l, "foonil"))
-      cout << "nil" << endl;*/
+      cout << "nil" << endl;
     
     lua_close(l);
 

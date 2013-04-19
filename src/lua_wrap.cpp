@@ -49,7 +49,8 @@ static LuaTableElement getTableOnTop(lua_State* L, std::string key, int idx) {
         element.set(string(lua_tostring(L, idx-1)));
       } else if(lua_isboolean(L, idx-1)) {
         element.set(lua_toboolean(L, idx-1));
-        cout << lua_tostring(L, idx-1) << endl;
+      } else if(lua_isnil(L, idx-1)) {
+        element.setNil();
       } else if(lua_istable(L, idx-1)) {
         if(string_key)
           element = getTableOnTop(L, skey, idx);
@@ -100,7 +101,8 @@ static LuaTableElement getTableOnTop(lua_State* L, int key, int idx) {
         element.set(string(lua_tostring(L, idx-1)));
       } else if(lua_isboolean(L, idx-1)) {
         element.set(lua_toboolean(L, idx-1));
-        cout << lua_tostring(L, idx-1) << endl;
+      } else if(lua_isnil(L, idx-1)) {
+        element.setNil();
       } else if(lua_istable(L, idx-1)) {
         if(string_key)
           element = getTableOnTop(L, skey, idx);
@@ -151,6 +153,8 @@ LuaTableElement LuaWrap::readTableFromLua(lua_State *L, std::string var) {
         element.set(lua_tostring(L, -1));
       } else if(lua_isboolean(L, -1)) {
         element.set(lua_toboolean(L, -1));
+      } else if(lua_isnil(L, -1)) {
+        element.setNil();
       } else if(lua_istable(L, -1)) {
         if(string_key)
           element = getTableOnTop(L, skey, 0);
