@@ -9,6 +9,3 @@ print(thomas.soustable.boo)
 thomas.soustable.testf()
 fooo()
 
-print("TESTELEMENT")
-print("type:", type(te))
-print("val:", te)

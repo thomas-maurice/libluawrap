@@ -1,0 +1,63 @@
+.TH "LuaString" 3 "Sat Apr 20 2013" "Version 0.3" "libluawrap" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LuaString \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <lua_string\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLuaString\fP (std::string str='')"
+.br
+.ti -1c
+.RI "void \fBset\fP (std::string s)"
+.br
+.ti -1c
+.RI "std::string \fBget\fP ()"
+.br
+.ti -1c
+.RI "void \fBglobalize\fP (lua_State *L, std::string name)"
+.br
+.ti -1c
+.RI "void \fBpush\fP (lua_State *L)"
+.br
+.ti -1c
+.RI "bool \fBgetFromLua\fP (lua_State *L, std::string varname)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBvalue\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LuaString::LuaString (std::stringstr = \fC''\fP)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "std::string LuaString::get ()"
+
+.SS "bool LuaString::getFromLua (lua_State *L, std::stringvarname)"
+
+.SS "void LuaString::globalize (lua_State *L, std::stringname)"
+
+.SS "void LuaString::push (lua_State *L)"
+
+.SS "void LuaString::set (std::strings)"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string LuaString::value\fC [protected]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libluawrap from the source code\&.

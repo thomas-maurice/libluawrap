@@ -1,0 +1,78 @@
+.TH "LuaNumber" 3 "Sat Apr 20 2013" "Version 0.3" "libluawrap" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LuaNumber \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <lua_number\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLuaNumber\fP (double v=0)"
+.br
+.ti -1c
+.RI "void \fBset\fP (double v)"
+.br
+.ti -1c
+.RI "long \fBgetInt\fP ()"
+.br
+.ti -1c
+.RI "double \fBgetDouble\fP ()"
+.br
+.ti -1c
+.RI "double \fBget\fP ()"
+.br
+.ti -1c
+.RI "void \fBglobalize\fP (lua_State *L, std::string name)"
+.br
+.ti -1c
+.RI "void \fBpush\fP (lua_State *L)"
+.br
+.ti -1c
+.RI "bool \fBgetFromLua\fP (lua_State *L, std::string varname)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBvalue\fP"
+.br
+.ti -1c
+.RI "int \fBtype\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LuaNumber::LuaNumber (doublev = \fC0\fP)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "double LuaNumber::get ()"
+
+.SS "double LuaNumber::getDouble ()"
+
+.SS "bool LuaNumber::getFromLua (lua_State *L, std::stringvarname)"
+
+.SS "long LuaNumber::getInt ()"
+
+.SS "void LuaNumber::globalize (lua_State *L, std::stringname)"
+
+.SS "void LuaNumber::push (lua_State *L)"
+
+.SS "void LuaNumber::set (doublev)"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "int LuaNumber::type\fC [protected]\fP"
+
+.SS "double LuaNumber::value\fC [protected]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libluawrap from the source code\&.

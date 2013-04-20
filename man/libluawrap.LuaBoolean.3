@@ -1,0 +1,138 @@
+.TH "LuaBoolean" 3 "Sat Apr 20 2013" "Version 0.3" "libluawrap" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LuaBoolean \- 
+.PP
+This class represents a Lua boolean\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <lua_bool\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLuaBoolean\fP (bool b=true)"
+.br
+.RI "\fICreates a \fBLuaBoolean\fP variable\&. \fP"
+.ti -1c
+.RI "void \fBset\fP (bool b)"
+.br
+.RI "\fIChanges the value of the variable\&. \fP"
+.ti -1c
+.RI "bool \fBget\fP ()"
+.br
+.RI "\fIReturns the current value of the variable\&. \fP"
+.ti -1c
+.RI "void \fBpush\fP (lua_State *L)"
+.br
+.RI "\fIPushes the value of the boolean onto the lua stack\&. \fP"
+.ti -1c
+.RI "void \fBglobalize\fP (lua_State *L, std::string name)"
+.br
+.RI "\fIRegister the value of the boolean within a lua context with the given name\&. \fP"
+.ti -1c
+.RI "bool \fBgetFromLua\fP (lua_State *L, std::string varname)"
+.br
+.RI "\fILoads a value in the variable from the one existing in lua\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBvalue\fP"
+.br
+.RI "\fIThe value of the boolean\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class represents a Lua boolean\&. 
+
+This class is used to exchange boolean variables between C++ and Lua\&. You can push them into a lua context as well as reading them from a lua context\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LuaBoolean::LuaBoolean (boolb = \fCtrue\fP)"
+
+.PP
+Creates a \fBLuaBoolean\fP variable\&. Creates a new \fBLuaBoolean\fP variable initialized with the given value\&. If no value is provided, than it will be assumed to be true\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIb\fP The initial value of the boolean 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "bool LuaBoolean::get ()"
+
+.PP
+Returns the current value of the variable\&. Returns the value of the boolean
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the boolean 
+.RE
+.PP
+
+.SS "bool LuaBoolean::getFromLua (lua_State *L, std::stringvarname)"
+
+.PP
+Loads a value in the variable from the one existing in lua\&. Loads the value from the Lua context into the variable\&. If the value exists, this function will return true, false otherwise\&. The value will be stored into the object\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The lua context 
+.br
+\fIvarname\fP The name of the variable to load 
+.RE
+.PP
+
+.SS "void LuaBoolean::globalize (lua_State *L, std::stringname)"
+
+.PP
+Register the value of the boolean within a lua context with the given name\&. Globalize the value into the Lua context\&. This is used to 'register' variables, for exemple if you want to have a variable named 'foo' in your lua context, just call \fCboolean\&.globalize(L, 'foo');\fP Please not that if the value is modified in the Lua context, it won't be modified in the C++ context\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The lua context 
+.br
+\fIname\fP The name you register your variable under 
+.RE
+.PP
+
+.SS "void LuaBoolean::push (lua_State *L)"
+
+.PP
+Pushes the value of the boolean onto the lua stack\&. Pushes the value of the boolean on the top of the Luya stack\&. This action is performed when you want to return a value in a lua function, first you push all the return values on the stack then the function returns the number of pushed values\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The used Lua context 
+.RE
+.PP
+
+.SS "void LuaBoolean::set (boolb)"
+
+.PP
+Changes the value of the variable\&. Changes the value of the \fBLuaBoolean\fP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIb\fP The new value 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "bool LuaBoolean::value\fC [protected]\fP"
+
+.PP
+The value of the boolean\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libluawrap from the source code\&.

@@ -1,0 +1,202 @@
+.TH "LuaTableElement" 3 "Sat Apr 20 2013" "Version 0.3" "libluawrap" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LuaTableElement \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <lua_table_element\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLuaTableElement\fP ()"
+.br
+.ti -1c
+.RI "\fBLuaTableElement\fP (std::string pkey)"
+.br
+.ti -1c
+.RI "\fBLuaTableElement\fP (int pindex)"
+.br
+.ti -1c
+.RI "void \fBdump\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetIndex\fP (int i)"
+.br
+.ti -1c
+.RI "void \fBsetKey\fP (std::string k)"
+.br
+.ti -1c
+.RI "void \fBaddChildren\fP (\fBLuaTableElement\fP e)"
+.br
+.ti -1c
+.RI "void \fBset\fP (\fBLuaNumber\fP num)"
+.br
+.ti -1c
+.RI "void \fBset\fP (\fBLuaString\fP str)"
+.br
+.ti -1c
+.RI "void \fBset\fP (\fBLuaBoolean\fP b)"
+.br
+.ti -1c
+.RI "void \fBset\fP (\fBLuaNil\fP n)"
+.br
+.ti -1c
+.RI "void \fBsetNil\fP ()"
+.br
+.ti -1c
+.RI "void \fBset\fP (double num)"
+.br
+.ti -1c
+.RI "void \fBset\fP (int num)"
+.br
+.ti -1c
+.RI "void \fBset\fP (float num)"
+.br
+.ti -1c
+.RI "void \fBset\fP (std::string str)"
+.br
+.ti -1c
+.RI "void \fBset\fP (char *str)"
+.br
+.ti -1c
+.RI "void \fBset\fP (bool b)"
+.br
+.ti -1c
+.RI "std::string \fBtoString\fP ()"
+.br
+.ti -1c
+.RI "double \fBtoNumber\fP ()"
+.br
+.ti -1c
+.RI "bool \fBtoBoolean\fP ()"
+.br
+.ti -1c
+.RI "void \fBpush\fP (lua_State *L)"
+.br
+.ti -1c
+.RI "void \fBglobalize\fP (lua_State *L)"
+.br
+.ti -1c
+.RI "int \fBgetType\fP ()"
+.br
+.ti -1c
+.RI "bool \fBisNil\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBgetKey\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetIndex\fP ()"
+.br
+.ti -1c
+.RI "bool \fBgetIsInArray\fP ()"
+.br
+.ti -1c
+.RI "std::vector< \fBLuaTableElement\fP > \fBgetChildren\fP ()"
+.br
+.ti -1c
+.RI "bool \fBelementExists\fP (std::string element)"
+.br
+.ti -1c
+.RI "bool \fBelementIsNil\fP (std::string element)"
+.br
+.ti -1c
+.RI "bool \fBelementIsString\fP (std::string element)"
+.br
+.ti -1c
+.RI "bool \fBelementIsNumber\fP (std::string element)"
+.br
+.ti -1c
+.RI "bool \fBelementIsBoolean\fP (std::string element)"
+.br
+.ti -1c
+.RI "bool \fBelementIsTable\fP (std::string element)"
+.br
+.ti -1c
+.RI "\fBLuaTableElement\fP * \fBgetElement\fP (std::string element)"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LuaTableElement::LuaTableElement ()"
+
+.SS "LuaTableElement::LuaTableElement (std::stringpkey)"
+
+.SS "LuaTableElement::LuaTableElement (intpindex)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void LuaTableElement::addChildren (\fBLuaTableElement\fPe)"
+
+.SS "void LuaTableElement::dump ()"
+
+.SS "bool LuaTableElement::elementExists (std::stringelement)"
+
+.SS "bool LuaTableElement::elementIsBoolean (std::stringelement)"
+
+.SS "bool LuaTableElement::elementIsNil (std::stringelement)"
+
+.SS "bool LuaTableElement::elementIsNumber (std::stringelement)"
+
+.SS "bool LuaTableElement::elementIsString (std::stringelement)"
+
+.SS "bool LuaTableElement::elementIsTable (std::stringelement)"
+
+.SS "std::vector< \fBLuaTableElement\fP > LuaTableElement::getChildren ()"
+
+.SS "\fBLuaTableElement\fP * LuaTableElement::getElement (std::stringelement)"
+
+.SS "int LuaTableElement::getIndex ()"
+
+.SS "bool LuaTableElement::getIsInArray ()"
+
+.SS "std::string LuaTableElement::getKey ()"
+
+.SS "int LuaTableElement::getType ()"
+
+.SS "void LuaTableElement::globalize (lua_State *L)"
+
+.SS "bool LuaTableElement::isNil ()"
+
+.SS "void LuaTableElement::push (lua_State *L)"
+
+.SS "void LuaTableElement::set (\fBLuaNumber\fPnum)"
+
+.SS "void LuaTableElement::set (\fBLuaString\fPstr)"
+
+.SS "void LuaTableElement::set (\fBLuaBoolean\fPb)"
+
+.SS "void LuaTableElement::set (\fBLuaNil\fPn)"
+
+.SS "void LuaTableElement::set (doublenum)"
+
+.SS "void LuaTableElement::set (intnum)"
+
+.SS "void LuaTableElement::set (floatnum)"
+
+.SS "void LuaTableElement::set (std::stringstr)"
+
+.SS "void LuaTableElement::set (char *str)"
+
+.SS "void LuaTableElement::set (boolb)"
+
+.SS "void LuaTableElement::setIndex (inti)"
+
+.SS "void LuaTableElement::setKey (std::stringk)"
+
+.SS "void LuaTableElement::setNil ()"
+
+.SS "bool LuaTableElement::toBoolean ()"
+
+.SS "double LuaTableElement::toNumber ()"
+
+.SS "std::string LuaTableElement::toString ()"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libluawrap from the source code\&.

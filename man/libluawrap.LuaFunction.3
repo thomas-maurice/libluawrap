@@ -1,0 +1,171 @@
+.TH "LuaFunction" 3 "Sat Apr 20 2013" "Version 0.3" "libluawrap" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LuaFunction \- 
+.PP
+This class represents a Lua function\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <lua_function\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLuaFunction\fP (std::string n='')"
+.br
+.RI "\fIA constructor with the name of the function\&. \fP"
+.ti -1c
+.RI "void \fBsetName\fP (std::string n)"
+.br
+.RI "\fIChanges the name of the function\&. \fP"
+.ti -1c
+.RI "void \fBsetFunction\fP (int(*f)(lua_State *))"
+.br
+.RI "\fIChanges the function pointer\&. \fP"
+.ti -1c
+.RI "std::string \fBgetName\fP ()"
+.br
+.RI "\fIReturns the name of the function\&. \fP"
+.ti -1c
+.RI "void \fBglobalize\fP (lua_State *L)"
+.br
+.RI "\fIGlobalize the function with it's given name\&. \fP"
+.ti -1c
+.RI "void \fBglobalize\fP (lua_State *L, std::string n)"
+.br
+.RI "\fIGlobalize the function with a given name\&. \fP"
+.ti -1c
+.RI "void \fBpush\fP (lua_State *L)"
+.br
+.RI "\fIPushes the function onto the top of the Lua stack\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int(*)(lua_State *) \fBgetFunction\fP (void)"
+.br
+.RI "\fIReturns the pointer on the function\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "int(* \fBfunc\fP )(lua_State *)"
+.br
+.RI "\fIThe pointer on the function\&. \fP"
+.ti -1c
+.RI "std::string \fBname\fP"
+.br
+.RI "\fIThe name of the function\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class represents a Lua function\&. 
+
+This class is used to exchange functions between C++ and Lua\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LuaFunction::LuaFunction (std::stringn = \fC''\fP)"
+
+.PP
+A constructor with the name of the function\&. Creates a function with the given name
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP The name of the function 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "std::string LuaFunction::getName ()"
+
+.PP
+Returns the name of the function\&. Returns the name of the function
+.PP
+\fBReturns:\fP
+.RS 4
+The name of the function 
+.RE
+.PP
+
+.SS "void LuaFunction::globalize (lua_State *L)"
+
+.PP
+Globalize the function with it's given name\&. Registers the function with it's default name\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The lua context 
+.RE
+.PP
+
+.SS "void LuaFunction::globalize (lua_State *L, std::stringn)"
+
+.PP
+Globalize the function with a given name\&. Registers the function with a custom name
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The lua context 
+.br
+\fIn\fP The name of the function 
+.RE
+.PP
+
+.SS "void LuaFunction::push (lua_State *L)"
+
+.PP
+Pushes the function onto the top of the Lua stack\&. Pushes the function on the top of the lua stack\&. This is used to return variables from a lua function\&. For more info, read the Lua documentation\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The lua context 
+.RE
+.PP
+
+.SS "void LuaFunction::setFunction (int(*)(lua_State *)f)"
+
+.PP
+Changes the function pointer\&. Changes the pointer on the function\&. The function is a 'cfunction' according to Lua documentation\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP The function 
+.RE
+.PP
+
+.SS "void LuaFunction::setName (std::stringn)"
+
+.PP
+Changes the name of the function\&. Changes the name of the function
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP The name of the function 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "int(* LuaFunction::func)(lua_State *)\fC [protected]\fP"
+
+.PP
+The pointer on the function\&. 
+.SS "int(* )(lua_State*) LuaFunction::getFunction(void)"
+
+.PP
+Returns the pointer on the function\&. 
+.SS "std::string LuaFunction::name\fC [protected]\fP"
+
+.PP
+The name of the function\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libluawrap from the source code\&.

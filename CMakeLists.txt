@@ -6,6 +6,8 @@ PROJECT(libluawrap)
 
 INCLUDE(FindPkgConfig)
 
+INCLUDE(cmake/FindGZIP.cmake)
+
 IF(NOT PKG_CONFIG_FOUND)
 	message(FATAL_ERROR "You need to install pkg-config. Exiting.")
 ENDIF()
@@ -28,6 +30,17 @@ LINK_DIRECTORIES(${LUA_LIBRARY_DIRS} ${LIBRARY_OUTPUT_PATH})
 
 SET(MAJORV "0")
 SET(MINORV "2")
+
+SET(MAN_PAGES "man/libluawrap.LuaBoolean.3"
+              "man/libluawrap.LuaFunction.3"
+              "man/libluawrap.LuaNil.3"
+              "man/libluawrap.LuaNumber.3"
+              "man/libluawrap.LuaString.3"
+              "man/libluawrap.LuaWrap.3"
+              "man/libluawrap.LuaTable.3"
+              "man/libluawrap.LuaTableElement.3")
+
+INCLUDE(cmake/BuildMan.cmake)
 
 # Configuration des fichiers sources
 # Lecture de tout les .cpp et .h

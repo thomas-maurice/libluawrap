@@ -1,0 +1,236 @@
+.TH "LuaTable" 3 "Sat Apr 20 2013" "Version 0.3" "libluawrap" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LuaTable \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <lua_table\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLuaTable\fP (std::string t_name='')"
+.br
+.ti -1c
+.RI "void \fBpush\fP (lua_State *L)"
+.br
+.ti -1c
+.RI "void \fBglobalize\fP (lua_State *L, std::string name)"
+.br
+.ti -1c
+.RI "void \fBsetMetatable\fP (std::string p_metatable)"
+.br
+.ti -1c
+.RI "void \fBsetMetatable\fP (\fBLuaTable\fP meta)"
+.br
+.ti -1c
+.RI "void \fBaddField_Table\fP (std::string name, \fBLuaTable\fP *table)"
+.br
+.ti -1c
+.RI "void \fBaddField_Function\fP (std::string name, \fBLuaFunction\fP *func)"
+.br
+.ti -1c
+.RI "void \fBaddField_Number\fP (std::string name, \fBLuaNumber\fP num)"
+.br
+.ti -1c
+.RI "void \fBaddField_Number\fP (std::string name, double num)"
+.br
+.ti -1c
+.RI "void \fBaddField_Boolean\fP (std::string name, \fBLuaBoolean\fP b)"
+.br
+.ti -1c
+.RI "void \fBaddField_Boolean\fP (std::string name, bool b)"
+.br
+.ti -1c
+.RI "void \fBaddField_String\fP (std::string name, std::string str)"
+.br
+.ti -1c
+.RI "void \fBaddField_String\fP (std::string name, \fBLuaString\fP str)"
+.br
+.ti -1c
+.RI "void \fBaddField_Nil\fP (std::string name, \fBLuaNil\fP nil)"
+.br
+.ti -1c
+.RI "void \fBaddField_Nil\fP (std::string name)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Table\fP (int index, \fBLuaTable\fP *table)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Function\fP (int index, \fBLuaFunction\fP *func)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Number\fP (int index, \fBLuaNumber\fP num)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Number\fP (int index, double num)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Boolean\fP (int index, \fBLuaBoolean\fP b)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Boolean\fP (int index, bool b)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_String\fP (int index, std::string str)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_String\fP (int index, \fBLuaString\fP str)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Nil\fP (int index, \fBLuaNil\fP nil)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Nil\fP (int index)"
+.br
+.ti -1c
+.RI "std::string \fBgetName\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBmetatable\fP"
+.br
+.ti -1c
+.RI "std::string \fBtable_name\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBLuaTableField_Table\fP > \fBtables\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBLuaTableField_String\fP > \fBstrings\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBLuaTableField_Number\fP > \fBnumbers\fP"
+.br
+.ti -1c
+.RI "std::vector
+.br
+< \fBLuaTableField_Function\fP > \fBfunctions\fP"
+.br
+.ti -1c
+.RI "std::vector
+.br
+< \fBLuaTableField_Boolean\fP > \fBbooleans\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBLuaTableField_Nil\fP > \fBnils\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBLuaTableIndex_Table\fP > \fBi_tables\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBLuaTableIndex_String\fP > \fBi_strings\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBLuaTableIndex_Number\fP > \fBi_numbers\fP"
+.br
+.ti -1c
+.RI "std::vector
+.br
+< \fBLuaTableIndex_Function\fP > \fBi_functions\fP"
+.br
+.ti -1c
+.RI "std::vector
+.br
+< \fBLuaTableIndex_Boolean\fP > \fBi_booleans\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBLuaTableIndex_Nil\fP > \fBi_nils\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LuaTable::LuaTable (std::stringt_name = \fC''\fP)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void LuaTable::addField_Boolean (std::stringname, \fBLuaBoolean\fPb)"
+
+.SS "void LuaTable::addField_Boolean (std::stringname, boolb)"
+
+.SS "void LuaTable::addField_Function (std::stringname, \fBLuaFunction\fP *func)"
+
+.SS "void LuaTable::addField_Nil (std::stringname, \fBLuaNil\fPnil)"
+
+.SS "void LuaTable::addField_Nil (std::stringname)"
+
+.SS "void LuaTable::addField_Number (std::stringname, \fBLuaNumber\fPnum)"
+
+.SS "void LuaTable::addField_Number (std::stringname, doublenum)"
+
+.SS "void LuaTable::addField_String (std::stringname, std::stringstr)"
+
+.SS "void LuaTable::addField_String (std::stringname, \fBLuaString\fPstr)"
+
+.SS "void LuaTable::addField_Table (std::stringname, \fBLuaTable\fP *table)"
+
+.SS "void LuaTable::addIndex_Boolean (intindex, \fBLuaBoolean\fPb)"
+
+.SS "void LuaTable::addIndex_Boolean (intindex, boolb)"
+
+.SS "void LuaTable::addIndex_Function (intindex, \fBLuaFunction\fP *func)"
+
+.SS "void LuaTable::addIndex_Nil (intindex, \fBLuaNil\fPnil)"
+
+.SS "void LuaTable::addIndex_Nil (intindex)"
+
+.SS "void LuaTable::addIndex_Number (intindex, \fBLuaNumber\fPnum)"
+
+.SS "void LuaTable::addIndex_Number (intindex, doublenum)"
+
+.SS "void LuaTable::addIndex_String (intindex, std::stringstr)"
+
+.SS "void LuaTable::addIndex_String (intindex, \fBLuaString\fPstr)"
+
+.SS "void LuaTable::addIndex_Table (intindex, \fBLuaTable\fP *table)"
+
+.SS "std::string LuaTable::getName ()"
+
+.SS "void LuaTable::globalize (lua_State *L, std::stringname)"
+
+.SS "void LuaTable::push (lua_State *L)"
+
+.SS "void LuaTable::setMetatable (std::stringp_metatable)"
+
+.SS "void LuaTable::setMetatable (\fBLuaTable\fPmeta)"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<\fBLuaTableField_Boolean\fP> LuaTable::booleans\fC [protected]\fP"
+
+.SS "std::vector<\fBLuaTableField_Function\fP> LuaTable::functions\fC [protected]\fP"
+
+.SS "std::vector<\fBLuaTableIndex_Boolean\fP> LuaTable::i_booleans\fC [protected]\fP"
+
+.SS "std::vector<\fBLuaTableIndex_Function\fP> LuaTable::i_functions\fC [protected]\fP"
+
+.SS "std::vector<\fBLuaTableIndex_Nil\fP> LuaTable::i_nils\fC [protected]\fP"
+
+.SS "std::vector<\fBLuaTableIndex_Number\fP> LuaTable::i_numbers\fC [protected]\fP"
+
+.SS "std::vector<\fBLuaTableIndex_String\fP> LuaTable::i_strings\fC [protected]\fP"
+
+.SS "std::vector<\fBLuaTableIndex_Table\fP> LuaTable::i_tables\fC [protected]\fP"
+
+.SS "std::string LuaTable::metatable\fC [protected]\fP"
+
+.SS "std::vector<\fBLuaTableField_Nil\fP> LuaTable::nils\fC [protected]\fP"
+
+.SS "std::vector<\fBLuaTableField_Number\fP> LuaTable::numbers\fC [protected]\fP"
+
+.SS "std::vector<\fBLuaTableField_String\fP> LuaTable::strings\fC [protected]\fP"
+
+.SS "std::string LuaTable::table_name\fC [protected]\fP"
+
+.SS "std::vector<\fBLuaTableField_Table\fP> LuaTable::tables\fC [protected]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libluawrap from the source code\&.
