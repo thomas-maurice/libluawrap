@@ -21,6 +21,13 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #ifndef LUA_DEBUG
 #define LUA_DEBUG
 
+/**
+  \file lua_debug.h
+  \author Thomas Maurice
+  
+  Definition of a debug function, stackDump, from lua-users.org
+*/
+
 extern "C"
 {
   #include <lua.h>
@@ -31,6 +38,6 @@ extern "C"
 #include <iostream>
 #include <stdio.h>
 
-void stackDump (lua_State *L);
+void stackDump (lua_State *L); //!< Dumps the Lua stack
 
 #endif

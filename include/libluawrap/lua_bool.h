@@ -27,7 +27,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   \author Thomas Maurice
   
   \class LuaBoolean
-  \brief This class represents a Lua boolean
+  \brief Lua booleans
   
   This class is used to exchange boolean variables between C++ and Lua.
   You can push them into a lua context as well as reading them from a lua context.

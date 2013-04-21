@@ -26,75 +26,94 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <lua_string.h>
 #include <lua_bool.h>
 #include <lua_nil.h>
+#include <lua_function.h>
 
 #include <vector>
 
-enum {NUMBER, STRING, BOOLEAN, NIL, TABLE};
+/**
+  \file lua_table_element.h
+  \author Thomas Maurice
+  
+  \class LuaTableElement
+  \brief Lua Table Elements and therefore recursive tables.
+  
+  Is a new version of the LuaTable class. This one is much more better in the
+  way that it is bidirectional for the simple types such as Numbers, Strings,
+  Booleans and Tables and unidirectionnal (C++ -> Lua) for the function. This is
+  therefore the best class to read from Lua configuration files using the LuaWrap::readTableFromLua
+  function.
+*/
 
+enum luaTableElementTypes {NUMBER, STRING, BOOLEAN, NIL, TABLE, FUNCTION}; //!< Defines the type of the table elements
 
 class LuaTableElement
 {
   public:
-    LuaTableElement();
-    LuaTableElement(std::string pkey);
-    LuaTableElement(int pindex);
+    LuaTableElement(); //!< Simple constructor
+    LuaTableElement(std::string pkey); //!< Constructor with a 'key'
+    LuaTableElement(int pindex); //!< Constructor with an index
     
-    void dump();
+    void dump(); //!< Displays the table recursively starting from the current node
     
-    void setIndex(int i);
-    void setKey(std::string k);
+    void setIndex(int i); //!< Changes the index
+    void setKey(std::string k); //!< Changes the key
     
-    void addChildren(LuaTableElement e);
+    void addChildren(LuaTableElement e); //!< Adds a children to the curent table
     
-    void set(LuaNumber num);
-    void set(LuaString str);
-    void set(LuaBoolean b);
-    void set(LuaNil n);
+    void set(LuaNumber num); //!< Changes the value to a Number
+    void set(LuaString str); //!< Changes the value to a String 
+    void set(LuaBoolean b); //!< Changes the value to a Boolean 
+    void set(LuaNil n); //!< Changes the value to Nil
+    void set(LuaFunction f); //!< Changes the value to a Function
     
-    void setNil();
+    void setNil(); //!< Sets the value to nil
     
-    void set(double num);
-    void set(int num);
-    void set(float num);
-    void set(std::string str);
-    void set(char* str);
-    void set(bool b);
+    void set(double num); //!< Sets the value to a Number
+    void set(int num); //!< Sets the value to a Number
+    void set(float num); //!< Sets the value to a Number
+    void set(std::string str); //!< Sets the value to a String
+    void set(char* str); //!< Sets the value to a String
+    void set(bool b); //!< Sets the value to a Boolean
+    void set(int (*f)(lua_State*)); //!< Sets the value to a Function
     
-    std::string toString();
-    double toNumber();
-    bool toBoolean();
+    std::string toString(); //!< Exports to string
+    double toNumber(); //!< Exports to number
+    bool toBoolean(); //!< Export to boolean
+    int (* toFunction(void))(lua_State*); //!< Exports to function
     
-    void push(lua_State* L);
-    void globalize(lua_State* L);
+    void push(lua_State* L); //!< Pushes the table recursively on the top of the stack
+    void globalize(lua_State* L); //!< Registers the table in a Lua context
     
-    int getType();
-    bool isNil();
-    std::string getKey();
-    int getIndex();
-    bool getIsInArray();
+    int getType(); //!< Returns the type like defined in the lua_table_element.h enum
+    bool isNil(); //!< Returns true if nil
+    std::string getKey(); //!< Returns the key
+    int getIndex(); //!< Returns the index
+    bool getIsInArray(); //!< Returns true if is part of a array
     
-    std::vector<LuaTableElement> getChildren();
+    std::vector<LuaTableElement> getChildren(); //!< Returns the children list
     
-    bool elementExists(std::string element);
+    bool elementExists(std::string element); //!< Returns true if the subelement exists
     
-    bool elementIsNil(std::string element);
-    bool elementIsString(std::string element);
-    bool elementIsNumber(std::string element);
-    bool elementIsBoolean(std::string element);
-    bool elementIsTable(std::string element);
+    bool elementIsNil(std::string element); //!< Returns true if the subelement is nil
+    bool elementIsString(std::string element); //!< Returns true if the subelement is a string
+    bool elementIsNumber(std::string element); //!< Returns true if the subelement is a number
+    bool elementIsBoolean(std::string element); //!< Returns true if the subelement is a boolean
+    bool elementIsTable(std::string element); //!< Returns true if the subelement is a table
+    bool elementIsFunction(std::string element); //!< Returns true if the subelement is a function
     
-    LuaTableElement *getElement(std::string element);
+    LuaTableElement *getElement(std::string element); //!< Returns a pointer on the element
     
   private:
-    std::vector<LuaTableElement> children;
-    std::string key;
-    int index;
-    bool is_in_array;
+    std::vector<LuaTableElement> children; //!< Children list
+    std::string key; //!< The key
+    int index; //!< The index
+    bool is_in_array; //!< Are we in an array ?
     
-    int type;
+    int type; //!< Type
     
     double double_value;
     bool bool_value;
+    int (*func_value)(lua_State*);
     std::string string_value;
 };
 

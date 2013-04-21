@@ -22,13 +22,24 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #define LUA_NIL_WRAP
 #include <lua_defs.h>
 
+/**
+  \file lua_nil.h
+  \author Thomas Maurice
+  
+  \class LuaNil
+  \brief The Nil value
+  
+  This class is used to implement a Nil value in the API. This is mainly used
+  to push nil values on the top of the Lua stack.
+*/
+
 class LuaNil
 {
   public:
-    LuaNil();
+    LuaNil(); //!< Creates a nil value
     
-    void globalize(lua_State* L, std::string name);
-    void push(lua_State* L);
+    void globalize(lua_State* L, std::string name); //!< Registers a Nil value
+    void push(lua_State* L); //!< Pushes a Nil value on the top of the stack
     
   protected:
     

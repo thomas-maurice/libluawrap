@@ -27,7 +27,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   \author Thomas Maurice
   
   \class LuaFunction
-  \brief This class represents a Lua function
+  \brief Lua functions
   
   This class is used to exchange functions between C++ and Lua.
 */

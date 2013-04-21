@@ -18,6 +18,11 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 */
 
+/**
+  \file lua_function.cpp
+  \author Thomas Maurice
+*/
+
 #include <lua_function.h>
 
 /**

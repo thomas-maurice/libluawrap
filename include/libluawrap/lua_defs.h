@@ -52,6 +52,8 @@ class DllExport LuaString;
 class DllExport LuaNil;
 class DllExport LuaTableElement;
 
+/*! \cond PRIVATE */
+
 struct LuaTableField_Nil {
   std::string name;
 };
@@ -109,5 +111,7 @@ struct LuaTableIndex_Function {
   int index;
   LuaFunction *value;
 };
+
+/*! \endcond */
 
 #endif
