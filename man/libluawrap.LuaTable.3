@@ -3,6 +3,9 @@
 .nh
 .SH NAME
 LuaTable \- 
+.PP
+\fBDEPRECATED\fP class to handle Lua tables  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -90,60 +93,13 @@ LuaTable \-
 .RI "std::string \fBgetName\fP ()"
 .br
 .in -1c
-.SS "Protected Attributes"
+.SH "Detailed Description"
+.PP 
+\fBDEPRECATED\fP class to handle Lua tables 
 
-.in +1c
-.ti -1c
-.RI "std::string \fBmetatable\fP"
-.br
-.ti -1c
-.RI "std::string \fBtable_name\fP"
-.br
-.ti -1c
-.RI "std::vector< \fBLuaTableField_Table\fP > \fBtables\fP"
-.br
-.ti -1c
-.RI "std::vector< \fBLuaTableField_String\fP > \fBstrings\fP"
-.br
-.ti -1c
-.RI "std::vector< \fBLuaTableField_Number\fP > \fBnumbers\fP"
-.br
-.ti -1c
-.RI "std::vector
-.br
-< \fBLuaTableField_Function\fP > \fBfunctions\fP"
-.br
-.ti -1c
-.RI "std::vector
-.br
-< \fBLuaTableField_Boolean\fP > \fBbooleans\fP"
-.br
-.ti -1c
-.RI "std::vector< \fBLuaTableField_Nil\fP > \fBnils\fP"
-.br
-.ti -1c
-.RI "std::vector< \fBLuaTableIndex_Table\fP > \fBi_tables\fP"
-.br
-.ti -1c
-.RI "std::vector< \fBLuaTableIndex_String\fP > \fBi_strings\fP"
-.br
-.ti -1c
-.RI "std::vector< \fBLuaTableIndex_Number\fP > \fBi_numbers\fP"
-.br
-.ti -1c
-.RI "std::vector
-.br
-< \fBLuaTableIndex_Function\fP > \fBi_functions\fP"
-.br
-.ti -1c
-.RI "std::vector
-.br
-< \fBLuaTableIndex_Boolean\fP > \fBi_booleans\fP"
-.br
-.ti -1c
-.RI "std::vector< \fBLuaTableIndex_Nil\fP > \fBi_nils\fP"
-.br
-.in -1c
+This class is now obsolete with the arrival of \fBLuaTableElement\fP\&. This should not be used and only remains for compatibility reasons\&. If you want to use tables then it is a much more better idea to use the newest provided class :)
+.PP
+The documentation for this class will probably never be provided\&. Don't use this class, seriously, don't\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "LuaTable::LuaTable (std::stringt_name = \fC''\fP)"
@@ -199,36 +155,6 @@ LuaTable \-
 .SS "void LuaTable::setMetatable (std::stringp_metatable)"
 
 .SS "void LuaTable::setMetatable (\fBLuaTable\fPmeta)"
-
-.SH "Member Data Documentation"
-.PP 
-.SS "std::vector<\fBLuaTableField_Boolean\fP> LuaTable::booleans\fC [protected]\fP"
-
-.SS "std::vector<\fBLuaTableField_Function\fP> LuaTable::functions\fC [protected]\fP"
-
-.SS "std::vector<\fBLuaTableIndex_Boolean\fP> LuaTable::i_booleans\fC [protected]\fP"
-
-.SS "std::vector<\fBLuaTableIndex_Function\fP> LuaTable::i_functions\fC [protected]\fP"
-
-.SS "std::vector<\fBLuaTableIndex_Nil\fP> LuaTable::i_nils\fC [protected]\fP"
-
-.SS "std::vector<\fBLuaTableIndex_Number\fP> LuaTable::i_numbers\fC [protected]\fP"
-
-.SS "std::vector<\fBLuaTableIndex_String\fP> LuaTable::i_strings\fC [protected]\fP"
-
-.SS "std::vector<\fBLuaTableIndex_Table\fP> LuaTable::i_tables\fC [protected]\fP"
-
-.SS "std::string LuaTable::metatable\fC [protected]\fP"
-
-.SS "std::vector<\fBLuaTableField_Nil\fP> LuaTable::nils\fC [protected]\fP"
-
-.SS "std::vector<\fBLuaTableField_Number\fP> LuaTable::numbers\fC [protected]\fP"
-
-.SS "std::vector<\fBLuaTableField_String\fP> LuaTable::strings\fC [protected]\fP"
-
-.SS "std::string LuaTable::table_name\fC [protected]\fP"
-
-.SS "std::vector<\fBLuaTableField_Table\fP> LuaTable::tables\fC [protected]\fP"
 
 
 .SH "Author"

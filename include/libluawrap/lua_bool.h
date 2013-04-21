@@ -45,7 +45,7 @@ class LuaBoolean
     
     bool getFromLua(lua_State* L, std::string varname); //!< Loads a value in the variable from the one existing in lua
     
-  protected:
+  private:
     bool value; //!< The value of the boolean
 };
 

@@ -4,7 +4,7 @@
 .SH NAME
 LuaFunction \- 
 .PP
-This class represents a Lua function\&.  
+Lua functions\&.  
 
 .SH SYNOPSIS
 .br
@@ -51,21 +51,9 @@ This class represents a Lua function\&.
 .br
 .RI "\fIReturns the pointer on the function\&. \fP"
 .in -1c
-.SS "Protected Attributes"
-
-.in +1c
-.ti -1c
-.RI "int(* \fBfunc\fP )(lua_State *)"
-.br
-.RI "\fIThe pointer on the function\&. \fP"
-.ti -1c
-.RI "std::string \fBname\fP"
-.br
-.RI "\fIThe name of the function\&. \fP"
-.in -1c
 .SH "Detailed Description"
 .PP 
-This class represents a Lua function\&. 
+Lua functions\&. 
 
 This class is used to exchange functions between C++ and Lua\&. 
 .SH "Constructor & Destructor Documentation"
@@ -153,18 +141,10 @@ Changes the name of the function\&. Changes the name of the function
 
 .SH "Member Data Documentation"
 .PP 
-.SS "int(* LuaFunction::func)(lua_State *)\fC [protected]\fP"
-
-.PP
-The pointer on the function\&. 
 .SS "int(* )(lua_State*) LuaFunction::getFunction(void)"
 
 .PP
 Returns the pointer on the function\&. 
-.SS "std::string LuaFunction::name\fC [protected]\fP"
-
-.PP
-The name of the function\&. 
 
 .SH "Author"
 .PP 

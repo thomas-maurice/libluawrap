@@ -22,6 +22,20 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #define LUA_TABLE_WRAP
 #include <lua_defs.h>
 
+/**
+  \file lua_table.h
+  \author Thomas Maurice
+  
+  \class LuaTable
+  \brief **DEPRECATED** class to handle Lua tables
+  
+  This class is now obsolete with the arrival of LuaTableElement. This should not be
+  used and only remains for compatibility reasons. If you want to use tables then it is a much more better idea
+  to use the newest provided class :)
+  
+  The documentation for this class will probably never be provided. Don't use this class, seriously, don't.
+*/
+
 class LuaTable
 {
   public:
@@ -57,7 +71,7 @@ class LuaTable
 
     std::string getName();
 
-  protected:
+  private:
     std::string metatable;
     std::string table_name;
 

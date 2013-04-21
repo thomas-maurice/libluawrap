@@ -22,12 +22,25 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #define LUA__WRAP
 #include <lua_defs.h>
 
+/**
+  \file lua_wrap.h
+  \author Thomas Maurice
+  
+  \class LuaWrap
+  \brief Misc class to store useful functions
+  
+  Functions will be stored here and accessible with LuaWrap::Function
+*/
 class LuaWrap
 {
   public:
+    /** Useless constructor*/
     LuaWrap() {};
-    static bool isNil(lua_State* L, std::string varname);
-    static LuaTableElement readTableFromLua(lua_State *L, std::string var);
+    
+    static bool isNil(lua_State* L, std::string varname); //!< Test if a variable is nil
+    static LuaTableElement readTableFromLua(lua_State *L, std::string var); //!< Reads a table from Lua
+    static lua_State* newLuaContext(); //!< Returns a new Lua context
+    static void closeContext(lua_State* L); //!< Close a Lua context
 };
 
 #endif

@@ -41,7 +41,7 @@ class LuaNil
     void globalize(lua_State* L, std::string name); //!< Registers a Nil value
     void push(lua_State* L); //!< Pushes a Nil value on the top of the stack
     
-  protected:
+  private:
     
 };
 

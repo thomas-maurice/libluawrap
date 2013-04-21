@@ -47,7 +47,7 @@ class LuaFunction
     void globalize(lua_State* L, std::string n); //!< Globalize the function with a given name
     void push(lua_State* L); //!< Pushes the function onto the top of the Lua stack
     
-  protected:
+  private:
     int (*func)(lua_State*); //!< The pointer on the function
     std::string name; //!< The name of the function
     

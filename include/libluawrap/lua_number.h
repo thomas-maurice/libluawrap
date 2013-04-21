@@ -22,22 +22,32 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #define LUA_NUMBER_WRAP
 #include <lua_defs.h>
 
+/**
+  \file lua_number.h
+  \author Thomas Maurice
+  
+  \class LuaNumber
+  \brief Lua Numbers
+  
+  This class is used to exchange numeric variables between C++ and Lua.
+*/
+
 class LuaNumber
 {
   public:
-    LuaNumber(double v = 0);
-    void set(double v);
+    LuaNumber(double v = 0); //!< Creates a LuaNumber with a given value
+    void set(double v); //!< Changes the value
     
-    long getInt();
-    double getDouble();
-    double get();
+    long getInt(); //!< Returns the value as an integer
+    double getDouble(); //!< Returns the value as a double
+    double get(); //!< Returns the value (double by default)
     
-    void globalize(lua_State* L, std::string name);
-    void push(lua_State* L);
+    void globalize(lua_State* L, std::string name); //!< Registers the variable in the Lua context
+    void push(lua_State* L); //!< Pushes the variable on the top of the stack
     
-    bool getFromLua(lua_State* L, std::string varname);
+    bool getFromLua(lua_State* L, std::string varname); //!< Reads the value from Lua
     
-  protected:
+  private:
     double value;
     int type;
     

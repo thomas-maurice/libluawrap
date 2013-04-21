@@ -30,11 +30,13 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 */
 
 /**
-  \mainpage libvluawrap documentation
+  \mainpage libluawrap documentation
   
   libluawrap is a C++ library designed to make more easy the interactions between
   C++ and Lua. With this lib it is more easy to export tables, datas and so on
   from C++ to Lua as well as reading data, such as complex tables, from Lua to C++.
+  
+  \include main.cpp
 */
 
 extern "C"

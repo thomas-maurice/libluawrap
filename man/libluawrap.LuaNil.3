@@ -3,6 +3,9 @@
 .nh
 .SH NAME
 LuaNil \- 
+.PP
+The Nil value\&.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -14,22 +17,52 @@ LuaNil \-
 .ti -1c
 .RI "\fBLuaNil\fP ()"
 .br
+.RI "\fICreates a nil value\&. \fP"
 .ti -1c
 .RI "void \fBglobalize\fP (lua_State *L, std::string name)"
 .br
+.RI "\fIRegisters a Nil value\&. \fP"
 .ti -1c
 .RI "void \fBpush\fP (lua_State *L)"
 .br
+.RI "\fIPushes a Nil value on the top of the stack\&. \fP"
 .in -1c
+.SH "Detailed Description"
+.PP 
+The Nil value\&. 
+
+This class is used to implement a Nil value in the API\&. This is mainly used to push nil values on the top of the Lua stack\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "LuaNil::LuaNil ()"
 
+.PP
+Creates a nil value\&. Default constructor, very simple : does nothing\&. Just create a \fBLuaNil\fP object\&. 
 .SH "Member Function Documentation"
 .PP 
 .SS "void LuaNil::globalize (lua_State *L, std::stringname)"
 
+.PP
+Registers a Nil value\&. Globalizes a nil value with a given name within a Lua context\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The lua context 
+.br
+\fIname\fP The name under which the variable shall be registered 
+.RE
+.PP
+
 .SS "void LuaNil::push (lua_State *L)"
+
+.PP
+Pushes a Nil value on the top of the stack\&. Pushes the nil value onto the top of the stack\&. This can be used to return arguments from a Lua function\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The lua context 
+.RE
+.PP
 
 
 .SH "Author"

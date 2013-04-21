@@ -3,6 +3,9 @@
 .nh
 .SH NAME
 LuaTableElement \- 
+.PP
+Lua Table Elements and therefore recursive tables\&.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -14,188 +17,432 @@ LuaTableElement \-
 .ti -1c
 .RI "\fBLuaTableElement\fP ()"
 .br
+.RI "\fISimple constructor\&. \fP"
 .ti -1c
 .RI "\fBLuaTableElement\fP (std::string pkey)"
 .br
+.RI "\fIConstructor with a 'key'\&. \fP"
 .ti -1c
 .RI "\fBLuaTableElement\fP (int pindex)"
 .br
+.RI "\fIConstructor with an index\&. \fP"
 .ti -1c
 .RI "void \fBdump\fP ()"
 .br
+.RI "\fIDisplays the table recursively starting from the current node\&. \fP"
 .ti -1c
 .RI "void \fBsetIndex\fP (int i)"
 .br
+.RI "\fIChanges the index\&. \fP"
 .ti -1c
 .RI "void \fBsetKey\fP (std::string k)"
 .br
+.RI "\fIChanges the key\&. \fP"
 .ti -1c
 .RI "void \fBaddChildren\fP (\fBLuaTableElement\fP e)"
 .br
+.RI "\fIAdds a children to the curent table\&. \fP"
 .ti -1c
 .RI "void \fBset\fP (\fBLuaNumber\fP num)"
 .br
+.RI "\fIChanges the value to a Number\&. \fP"
 .ti -1c
 .RI "void \fBset\fP (\fBLuaString\fP str)"
 .br
+.RI "\fIChanges the value to a String\&. \fP"
 .ti -1c
 .RI "void \fBset\fP (\fBLuaBoolean\fP b)"
 .br
+.RI "\fIChanges the value to a Boolean\&. \fP"
 .ti -1c
 .RI "void \fBset\fP (\fBLuaNil\fP n)"
 .br
+.RI "\fIChanges the value to Nil\&. \fP"
+.ti -1c
+.RI "void \fBset\fP (\fBLuaFunction\fP f)"
+.br
+.RI "\fIChanges the value to a Function\&. \fP"
 .ti -1c
 .RI "void \fBsetNil\fP ()"
 .br
+.RI "\fISets the value to nil\&. \fP"
 .ti -1c
 .RI "void \fBset\fP (double num)"
 .br
+.RI "\fISets the value to a Number\&. \fP"
 .ti -1c
 .RI "void \fBset\fP (int num)"
 .br
+.RI "\fISets the value to a Number\&. \fP"
 .ti -1c
 .RI "void \fBset\fP (float num)"
 .br
+.RI "\fISets the value to a Number\&. \fP"
 .ti -1c
 .RI "void \fBset\fP (std::string str)"
 .br
+.RI "\fISets the value to a String\&. \fP"
 .ti -1c
 .RI "void \fBset\fP (char *str)"
 .br
+.RI "\fISets the value to a String\&. \fP"
 .ti -1c
 .RI "void \fBset\fP (bool b)"
 .br
+.RI "\fISets the value to a Boolean\&. \fP"
+.ti -1c
+.RI "void \fBset\fP (int(*f)(lua_State *))"
+.br
+.RI "\fISets the value to a Function\&. \fP"
 .ti -1c
 .RI "std::string \fBtoString\fP ()"
 .br
+.RI "\fIExports to string\&. \fP"
 .ti -1c
 .RI "double \fBtoNumber\fP ()"
 .br
+.RI "\fIExports to number\&. \fP"
 .ti -1c
 .RI "bool \fBtoBoolean\fP ()"
 .br
+.RI "\fIExport to boolean\&. \fP"
 .ti -1c
 .RI "void \fBpush\fP (lua_State *L)"
 .br
+.RI "\fIPushes the table recursively on the top of the stack\&. \fP"
 .ti -1c
 .RI "void \fBglobalize\fP (lua_State *L)"
 .br
+.RI "\fIRegisters the table in a Lua context\&. \fP"
 .ti -1c
 .RI "int \fBgetType\fP ()"
 .br
+.RI "\fIReturns the type like defined in the \fBlua_table_element\&.h\fP enum\&. \fP"
 .ti -1c
 .RI "bool \fBisNil\fP ()"
 .br
+.RI "\fIReturns true if nil\&. \fP"
 .ti -1c
 .RI "std::string \fBgetKey\fP ()"
 .br
+.RI "\fIReturns the key\&. \fP"
 .ti -1c
 .RI "int \fBgetIndex\fP ()"
 .br
+.RI "\fIReturns the index\&. \fP"
 .ti -1c
 .RI "bool \fBgetIsInArray\fP ()"
 .br
+.RI "\fIReturns true if is part of a array\&. \fP"
 .ti -1c
 .RI "std::vector< \fBLuaTableElement\fP > \fBgetChildren\fP ()"
 .br
+.RI "\fIReturns the children list\&. \fP"
 .ti -1c
 .RI "bool \fBelementExists\fP (std::string element)"
 .br
+.RI "\fIReturns true if the subelement exists\&. \fP"
 .ti -1c
 .RI "bool \fBelementIsNil\fP (std::string element)"
 .br
+.RI "\fIReturns true if the subelement is nil\&. \fP"
 .ti -1c
 .RI "bool \fBelementIsString\fP (std::string element)"
 .br
+.RI "\fIReturns true if the subelement is a string\&. \fP"
 .ti -1c
 .RI "bool \fBelementIsNumber\fP (std::string element)"
 .br
+.RI "\fIReturns true if the subelement is a number\&. \fP"
 .ti -1c
 .RI "bool \fBelementIsBoolean\fP (std::string element)"
 .br
+.RI "\fIReturns true if the subelement is a boolean\&. \fP"
 .ti -1c
 .RI "bool \fBelementIsTable\fP (std::string element)"
 .br
+.RI "\fIReturns true if the subelement is a table\&. \fP"
+.ti -1c
+.RI "bool \fBelementIsFunction\fP (std::string element)"
+.br
+.RI "\fIReturns true if the subelement is a function\&. \fP"
 .ti -1c
 .RI "\fBLuaTableElement\fP * \fBgetElement\fP (std::string element)"
 .br
+.RI "\fIReturns a pointer on the element\&. \fP"
 .in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int(*)(lua_State *) \fBtoFunction\fP (void)"
+.br
+.RI "\fIExports to function\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Lua Table Elements and therefore recursive tables\&. 
+
+Is a new version of the \fBLuaTable\fP class\&. This one is much more better in the way that it is bidirectional for the simple types such as Numbers, Strings, Booleans and Tables and unidirectionnal (C++ -> Lua) for the function\&. This is therefore the best class to read from Lua configuration files using the \fBLuaWrap::readTableFromLua\fP function\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "LuaTableElement::LuaTableElement ()"
 
+.PP
+Simple constructor\&. Initialize a new table (or table element, but by default it is considered as a table)\&. 
 .SS "LuaTableElement::LuaTableElement (std::stringpkey)"
 
+.PP
+Constructor with a 'key'\&. Initializes a new \fBLuaTableElement\fP with a given key\&. The key is wether the name of the table if it will be registered as a table, or the key of the element in the table\&. For example, if the key is 'foo', if you globalize the table you can access its elements by \fCfoo\&.element\fP but if this is an element within a table it shall be accessed with \fCtable\&.foo\fP
+.PP
+By default, this element will be of type \fBTABLE\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpkey\fP The key of the element 
+.RE
+.PP
+
 .SS "LuaTableElement::LuaTableElement (intpindex)"
+
+.PP
+Constructor with an index\&. Initialize a new table (or table element, but by default it is considered as a table)\&. With the index \fIpindex\fP\&. This is used to create and export arrays in Lua\&. You sould'nt use this for top-level tables\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpindex\fP The index 
+.RE
+.PP
 
 .SH "Member Function Documentation"
 .PP 
 .SS "void LuaTableElement::addChildren (\fBLuaTableElement\fPe)"
 
+.PP
+Adds a children to the curent table\&. Add a children to the \fBLuaTableElement\fP\&. The type will be changed to \fBTABLE\fP\&. Every element added will be a subelement of a table\&. For example if the base table is named 'foo' and the element we add is 'bar', it will be accessed by foo\&.bar in Lua\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIe\fP The element to add 
+.RE
+.PP
+
 .SS "void LuaTableElement::dump ()"
 
+.PP
+Displays the table recursively starting from the current node\&. Prints the table and all its subtables 
 .SS "bool LuaTableElement::elementExists (std::stringelement)"
+
+.PP
+Returns true if the subelement exists\&. Returns true if the subelement exists\&. The subelement is an element of a table\&. The root table is the element calling this methods, and all the sub elements are separated by dots\&. So if you have a root table 'foo' containing the table 'bar' containing the element 'baz' and if you want to test the value of 'baz' you will call \fCfoo\&.elementExists('bar\&.baz');\fP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelement\fP The element you want to test 
+.RE
+.PP
 
 .SS "bool LuaTableElement::elementIsBoolean (std::stringelement)"
 
+.PP
+Returns true if the subelement is a boolean\&. Returns true if the subelement is a boolean\&. The subelement is an element of a table\&. The root table is the element calling this methods, and all the sub elements are separated by dots\&. So if you have a root table 'foo' containing the table 'bar' containing the element 'baz' and if you want to test the value of 'baz' you will call \fCfoo\&.elementIsBoolean('bar\&.baz');\fP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelement\fP The element you want to test 
+.RE
+.PP
+
+.SS "bool LuaTableElement::elementIsFunction (std::stringelement)"
+
+.PP
+Returns true if the subelement is a function\&. Returns true if the subelement is a function\&. The subelement is an element of a table\&. The root table is the element calling this methods, and all the sub elements are separated by dots\&. So if you have a root table 'foo' containing the table 'bar' containing the element 'baz' and if you want to test the value of 'baz' you will call \fCfoo\&.elementIsFunction('bar\&.baz');\fP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelement\fP The element you want to test 
+.RE
+.PP
+
 .SS "bool LuaTableElement::elementIsNil (std::stringelement)"
+
+.PP
+Returns true if the subelement is nil\&. Returns true if the subelement is nil\&. The subelement is an element of a table\&. The root table is the element calling this methods, and all the sub elements are separated by dots\&. So if you have a root table 'foo' containing the table 'bar' containing the element 'baz' and if you want to test the value of 'baz' you will call \fCfoo\&.elementIsNil('bar\&.baz');\fP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelement\fP The element you want to test 
+.RE
+.PP
 
 .SS "bool LuaTableElement::elementIsNumber (std::stringelement)"
 
+.PP
+Returns true if the subelement is a number\&. Returns true if the subelement is a number\&. The subelement is an element of a table\&. The root table is the element calling this methods, and all the sub elements are separated by dots\&. So if you have a root table 'foo' containing the table 'bar' containing the element 'baz' and if you want to test the value of 'baz' you will call \fCfoo\&.elementIsNumber('bar\&.baz');\fP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelement\fP The element you want to test 
+.RE
+.PP
+
 .SS "bool LuaTableElement::elementIsString (std::stringelement)"
+
+.PP
+Returns true if the subelement is a string\&. Returns true if the subelement is a string\&. The subelement is an element of a table\&. The root table is the element calling this methods, and all the sub elements are separated by dots\&. So if you have a root table 'foo' containing the table 'bar' containing the element 'baz' and if you want to test the value of 'baz' you will call \fCfoo\&.elementIsString('bar\&.baz');\fP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelement\fP The element you want to test 
+.RE
+.PP
 
 .SS "bool LuaTableElement::elementIsTable (std::stringelement)"
 
+.PP
+Returns true if the subelement is a table\&. 
 .SS "std::vector< \fBLuaTableElement\fP > LuaTableElement::getChildren ()"
 
+.PP
+Returns the children list\&. Returns a vector cointaining all the children elements of the table 
 .SS "\fBLuaTableElement\fP * LuaTableElement::getElement (std::stringelement)"
+
+.PP
+Returns a pointer on the element\&. Returns a pointer on the requested element\&. If the element does not exist, then NULL shall be returned\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelement\fP The element you want to test 
+.RE
+.PP
 
 .SS "int LuaTableElement::getIndex ()"
 
+.PP
+Returns the index\&. Returns the index of the table 
 .SS "bool LuaTableElement::getIsInArray ()"
 
+.PP
+Returns true if is part of a array\&. Returns true if the table is an array 
 .SS "std::string LuaTableElement::getKey ()"
 
+.PP
+Returns the key\&. Returns the key of the table 
 .SS "int LuaTableElement::getType ()"
 
+.PP
+Returns the type like defined in the \fBlua_table_element\&.h\fP enum\&. Returns the type of the element, the type is one of those defined in the enum luaTableElementTypes 
 .SS "void LuaTableElement::globalize (lua_State *L)"
+
+.PP
+Registers the table in a Lua context\&. Registers the table recursively\&. The name of the top-level table is its key\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The lua context 
+.RE
+.PP
 
 .SS "bool LuaTableElement::isNil ()"
 
+.PP
+Returns true if nil\&. Returns true if the element is nil 
 .SS "void LuaTableElement::push (lua_State *L)"
+
+.PP
+Pushes the table recursively on the top of the stack\&. Pushes the table AND all the subelements/subtables on the top of the stack\&. This is used to return from Lua functions\&. To globalize a table into a Lua context you should use \fBLuaTableElement::globalize\fP
+.PP
+\fBDO NOT\fP use this function to globalize a \fBLuaTableElement\fP which is not included in a table, this will make your program to segfault\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The Lua context
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+Protect the function against single variables not included in a table\&. 
+.RE
+.PP
 
 .SS "void LuaTableElement::set (\fBLuaNumber\fPnum)"
 
+.PP
+Changes the value to a Number\&. Sets the value of the element as a numeric value 
 .SS "void LuaTableElement::set (\fBLuaString\fPstr)"
 
+.PP
+Changes the value to a String\&. Sets the value of the element as a string value 
 .SS "void LuaTableElement::set (\fBLuaBoolean\fPb)"
 
+.PP
+Changes the value to a Boolean\&. Sets the value of the element as a boolean value 
 .SS "void LuaTableElement::set (\fBLuaNil\fPn)"
 
+.PP
+Changes the value to Nil\&. Sets the value of the element as a nil value 
+.SS "void LuaTableElement::set (\fBLuaFunction\fPf)"
+
+.PP
+Changes the value to a Function\&. Sets the value of the element as a function value 
 .SS "void LuaTableElement::set (doublenum)"
 
+.PP
+Sets the value to a Number\&. Sets the value of the element as a numeric value (overloaded) 
 .SS "void LuaTableElement::set (intnum)"
 
+.PP
+Sets the value to a Number\&. Sets the value of the element as a numeric value (overloaded) 
 .SS "void LuaTableElement::set (floatnum)"
 
+.PP
+Sets the value to a Number\&. Sets the value of the element as a numeric value (overloaded) 
 .SS "void LuaTableElement::set (std::stringstr)"
 
+.PP
+Sets the value to a String\&. Sets the value of the element as a string value (overloaded) 
 .SS "void LuaTableElement::set (char *str)"
 
+.PP
+Sets the value to a String\&. Sets the value of the element as a string value (overloaded) 
 .SS "void LuaTableElement::set (boolb)"
 
+.PP
+Sets the value to a Boolean\&. Sets the value of the element as a boolean value (overloaded) 
+.SS "void LuaTableElement::set (int(*)(lua_State *)f)"
+
+.PP
+Sets the value to a Function\&. Sets the value of the element as a function value (overloaded) 
 .SS "void LuaTableElement::setIndex (inti)"
 
+.PP
+Changes the index\&. Changes the index 
 .SS "void LuaTableElement::setKey (std::stringk)"
 
+.PP
+Changes the key\&. Changes the key 
 .SS "void LuaTableElement::setNil ()"
 
+.PP
+Sets the value to nil\&. Sets the element as nil 
 .SS "bool LuaTableElement::toBoolean ()"
 
+.PP
+Export to boolean\&. Returns the boolean value of the function, if it's not a boolean, false will be returned 
 .SS "double LuaTableElement::toNumber ()"
 
+.PP
+Exports to number\&. Returns the number value of the element, if it's not a number, 0 will be returned 
 .SS "std::string LuaTableElement::toString ()"
 
+.PP
+Exports to string\&. Return the string value of the element, if the element is not a string, '' will be returned 
+.SH "Member Data Documentation"
+.PP 
+.SS "int(* )(lua_State*) LuaTableElement::toFunction(void)"
+
+.PP
+Exports to function\&. 
 
 .SH "Author"
 .PP 

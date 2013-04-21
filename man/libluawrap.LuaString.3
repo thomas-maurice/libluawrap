@@ -3,6 +3,9 @@
 .nh
 .SH NAME
 LuaString \- 
+.PP
+Lua Strings\&.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -14,49 +17,93 @@ LuaString \-
 .ti -1c
 .RI "\fBLuaString\fP (std::string str='')"
 .br
+.RI "\fICreates a new string object\&. \fP"
 .ti -1c
 .RI "void \fBset\fP (std::string s)"
 .br
+.RI "\fIChanges the value of the string\&. \fP"
 .ti -1c
 .RI "std::string \fBget\fP ()"
 .br
+.RI "\fIReturns the value of the string\&. \fP"
 .ti -1c
 .RI "void \fBglobalize\fP (lua_State *L, std::string name)"
 .br
+.RI "\fIRegisters the variable in the Lua context\&. \fP"
 .ti -1c
 .RI "void \fBpush\fP (lua_State *L)"
 .br
+.RI "\fIPushes the variable on the top of the stack\&. \fP"
 .ti -1c
 .RI "bool \fBgetFromLua\fP (lua_State *L, std::string varname)"
 .br
+.RI "\fIReads the value from Lua\&. \fP"
 .in -1c
-.SS "Protected Attributes"
+.SH "Detailed Description"
+.PP 
+Lua Strings\&. 
 
-.in +1c
-.ti -1c
-.RI "std::string \fBvalue\fP"
-.br
-.in -1c
+This class is used to exchange string variables between C++ and Lua\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "LuaString::LuaString (std::stringstr = \fC''\fP)"
+
+.PP
+Creates a new string object\&. Creates a new \fBLuaString\fP variable initialized with the given value\&. If no value is provided, than it will be assumed to be ''\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP The initial value of the string 
+.RE
+.PP
 
 .SH "Member Function Documentation"
 .PP 
 .SS "std::string LuaString::get ()"
 
+.PP
+Returns the value of the string\&. 
 .SS "bool LuaString::getFromLua (lua_State *L, std::stringvarname)"
+
+.PP
+Reads the value from Lua\&. Loads the value from the Lua context into the variable\&. If the value exists, this function will return true, false otherwise\&. The value will be stored into the object\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The lua context 
+.br
+\fIvarname\fP The name of the variable to load 
+.RE
+.PP
 
 .SS "void LuaString::globalize (lua_State *L, std::stringname)"
 
+.PP
+Registers the variable in the Lua context\&. Globalize the value into the Lua context\&. This is used to 'register' variables, for exemple if you want to have a variable named 'foo' in your lua context, just call \fCstr\&.globalize(L, 'foo');\fP Please not that if the value is modified in the Lua context, it won't be modified in the C++ context\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The lua context 
+.br
+\fIname\fP The name you register your variable under 
+.RE
+.PP
+
 .SS "void LuaString::push (lua_State *L)"
+
+.PP
+Pushes the variable on the top of the stack\&. Pushes the value of the string on the top of the Luya stack\&. This action is performed when you want to return a value in a lua function, first you push all the return values on the stack then the function returns the number of pushed values\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The used Lua context 
+.RE
+.PP
 
 .SS "void LuaString::set (std::strings)"
 
-.SH "Member Data Documentation"
-.PP 
-.SS "std::string LuaString::value\fC [protected]\fP"
-
+.PP
+Changes the value of the string\&. 
 
 .SH "Author"
 .PP 

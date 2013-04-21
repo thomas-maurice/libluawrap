@@ -2,9 +2,19 @@
 #include <lua_table_element.h>
 
 using namespace std;
+/* Functions used to read recursivelty from Lua */
 static LuaTableElement getTableOnTop(lua_State* L, int key, int idx);
 static LuaTableElement getTableOnTop(lua_State* L, std::string key, int idx);
 
+/**
+  Test if a variable is nil. This won't work with table members. For instance, you cannot
+  test if foo.bar is nil.
+  
+  \param[in] L The lua context
+  \param[in] varname The name of the variable you want to test
+  
+  \return true if the variable is nil.
+*/ 
 bool LuaWrap::isNil(lua_State* L, std::string varname)
 {
   lua_getglobal(L, varname.c_str());
@@ -117,6 +127,13 @@ static LuaTableElement getTableOnTop(lua_State* L, int key, int idx) {
   return result;
 }
 
+/**
+  Reads a table and all its sub members from Lua. If the table does not exist, then
+  an empty table shall be returned.
+  
+  \param[in] L The Lua context
+  \param[in] var The name of the table you want to read
+*/
 LuaTableElement LuaWrap::readTableFromLua(lua_State *L, std::string var) {
   LuaTableElement result(var);
   lua_getglobal(L, var.c_str());
@@ -169,4 +186,23 @@ LuaTableElement LuaWrap::readTableFromLua(lua_State *L, std::string var) {
   }
   lua_pop(L, 1); // Pops the table
   return result;
+}
+
+/**
+  Returns a new Lua context
+*/
+lua_State* LuaWrap::newLuaContext() {
+  lua_State * L = luaL_newstate();
+  luaL_openlibs(L);
+  return L;
+}
+
+/**
+  Closes a Lua context
+  
+  \param[in, out] L The context to close
+*/
+
+void LuaWrap::closeContext(lua_State* L) {
+  lua_close(L);
 }
