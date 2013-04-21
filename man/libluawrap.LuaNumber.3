@@ -1,0 +1,124 @@
+.TH "LuaNumber" 3 "Sun Apr 21 2013" "Version 0.3" "libluawrap" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LuaNumber \- 
+.PP
+Lua Numbers\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <lua_number\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLuaNumber\fP (double v=0)"
+.br
+.RI "\fICreates a \fBLuaNumber\fP with a given value\&. \fP"
+.ti -1c
+.RI "void \fBset\fP (double v)"
+.br
+.RI "\fIChanges the value\&. \fP"
+.ti -1c
+.RI "long \fBgetInt\fP ()"
+.br
+.RI "\fIReturns the value as an integer\&. \fP"
+.ti -1c
+.RI "double \fBgetDouble\fP ()"
+.br
+.RI "\fIReturns the value as a double\&. \fP"
+.ti -1c
+.RI "double \fBget\fP ()"
+.br
+.RI "\fIReturns the value (double by default) \fP"
+.ti -1c
+.RI "void \fBglobalize\fP (lua_State *L, std::string name)"
+.br
+.RI "\fIRegisters the variable in the Lua context\&. \fP"
+.ti -1c
+.RI "void \fBpush\fP (lua_State *L)"
+.br
+.RI "\fIPushes the variable on the top of the stack\&. \fP"
+.ti -1c
+.RI "bool \fBgetFromLua\fP (lua_State *L, std::string varname)"
+.br
+.RI "\fIReads the value from Lua\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Lua Numbers\&. 
+
+This class is used to exchange numeric variables between C++ and Lua\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LuaNumber::LuaNumber (doublev = \fC0\fP)"
+
+.PP
+Creates a \fBLuaNumber\fP with a given value\&. \fBParameters:\fP
+.RS 4
+\fIv\fP The initial value 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "double LuaNumber::get ()"
+
+.PP
+Returns the value (double by default) 
+.SS "double LuaNumber::getDouble ()"
+
+.PP
+Returns the value as a double\&. 
+.SS "bool LuaNumber::getFromLua (lua_State *L, std::stringvarname)"
+
+.PP
+Reads the value from Lua\&. Loads the value from the Lua context into the variable\&. If the value exists, this function will return true, false otherwise\&. The value will be stored into the object\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The lua context 
+.br
+\fIvarname\fP The name of the variable to load 
+.RE
+.PP
+
+.SS "long LuaNumber::getInt ()"
+
+.PP
+Returns the value as an integer\&. 
+.SS "void LuaNumber::globalize (lua_State *L, std::stringname)"
+
+.PP
+Registers the variable in the Lua context\&. Registers the variable in a Lua context
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The lua context 
+.br
+\fIname\fP The name of the variable 
+.RE
+.PP
+
+.SS "void LuaNumber::push (lua_State *L)"
+
+.PP
+Pushes the variable on the top of the stack\&. Pushes the variable on the top of the stack, this is used to return from Lua functions\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The lua context 
+.RE
+.PP
+
+.SS "void LuaNumber::set (doublev)"
+
+.PP
+Changes the value\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libluawrap from the source code\&.

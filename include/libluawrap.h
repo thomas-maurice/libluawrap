@@ -21,12 +21,33 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 */
 
+/**
+  \file libluawrap.h
+  \brief This file is the main header of the API
+  
+  \author Thomas Maurice
+  \version 0.3
+*/
+
+/**
+  \mainpage libluawrap documentation
+  
+  libluawrap is a C++ library designed to make more easy the interactions between
+  C++ and Lua. With this lib it is more easy to export tables, datas and so on
+  from C++ to Lua as well as reading data, such as complex tables, from Lua to C++.
+  
+  \include main.cpp
+*/
+
 extern "C"
 {
   #include <lua.h>
   #include <lauxlib.h>
   #include <lualib.h>
 }
+
+/** The current version of the API */
+#define LIBLUAWRAP_VERSION 0.3
 
 #include "libluawrap/lua_defs.h"
 #include "libluawrap/lua_debug.h"
@@ -37,7 +58,12 @@ extern "C"
 #include "libluawrap/lua_string.h"
 #include "libluawrap/lua_nil.h"
 #include "libluawrap/lua_wrap.h"
+#include "libluawrap/lua_table_element.h"
 
+/**
+  \brief Displays a simple message to warn of which version of the library you
+  are using
+*/
 void print_luawrap_version();
 
 #endif

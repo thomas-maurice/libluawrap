@@ -1,0 +1,162 @@
+.TH "LuaTable" 3 "Sun Apr 21 2013" "Version 0.3" "libluawrap" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LuaTable \- 
+.PP
+\fBDEPRECATED\fP class to handle Lua tables  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <lua_table\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLuaTable\fP (std::string t_name='')"
+.br
+.ti -1c
+.RI "void \fBpush\fP (lua_State *L)"
+.br
+.ti -1c
+.RI "void \fBglobalize\fP (lua_State *L, std::string name)"
+.br
+.ti -1c
+.RI "void \fBsetMetatable\fP (std::string p_metatable)"
+.br
+.ti -1c
+.RI "void \fBsetMetatable\fP (\fBLuaTable\fP meta)"
+.br
+.ti -1c
+.RI "void \fBaddField_Table\fP (std::string name, \fBLuaTable\fP *table)"
+.br
+.ti -1c
+.RI "void \fBaddField_Function\fP (std::string name, \fBLuaFunction\fP *func)"
+.br
+.ti -1c
+.RI "void \fBaddField_Number\fP (std::string name, \fBLuaNumber\fP num)"
+.br
+.ti -1c
+.RI "void \fBaddField_Number\fP (std::string name, double num)"
+.br
+.ti -1c
+.RI "void \fBaddField_Boolean\fP (std::string name, \fBLuaBoolean\fP b)"
+.br
+.ti -1c
+.RI "void \fBaddField_Boolean\fP (std::string name, bool b)"
+.br
+.ti -1c
+.RI "void \fBaddField_String\fP (std::string name, std::string str)"
+.br
+.ti -1c
+.RI "void \fBaddField_String\fP (std::string name, \fBLuaString\fP str)"
+.br
+.ti -1c
+.RI "void \fBaddField_Nil\fP (std::string name, \fBLuaNil\fP nil)"
+.br
+.ti -1c
+.RI "void \fBaddField_Nil\fP (std::string name)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Table\fP (int index, \fBLuaTable\fP *table)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Function\fP (int index, \fBLuaFunction\fP *func)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Number\fP (int index, \fBLuaNumber\fP num)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Number\fP (int index, double num)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Boolean\fP (int index, \fBLuaBoolean\fP b)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Boolean\fP (int index, bool b)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_String\fP (int index, std::string str)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_String\fP (int index, \fBLuaString\fP str)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Nil\fP (int index, \fBLuaNil\fP nil)"
+.br
+.ti -1c
+.RI "void \fBaddIndex_Nil\fP (int index)"
+.br
+.ti -1c
+.RI "std::string \fBgetName\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBDEPRECATED\fP class to handle Lua tables 
+
+This class is now obsolete with the arrival of \fBLuaTableElement\fP\&. This should not be used and only remains for compatibility reasons\&. If you want to use tables then it is a much more better idea to use the newest provided class :)
+.PP
+The documentation for this class will probably never be provided\&. Don't use this class, seriously, don't\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LuaTable::LuaTable (std::stringt_name = \fC''\fP)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void LuaTable::addField_Boolean (std::stringname, \fBLuaBoolean\fPb)"
+
+.SS "void LuaTable::addField_Boolean (std::stringname, boolb)"
+
+.SS "void LuaTable::addField_Function (std::stringname, \fBLuaFunction\fP *func)"
+
+.SS "void LuaTable::addField_Nil (std::stringname, \fBLuaNil\fPnil)"
+
+.SS "void LuaTable::addField_Nil (std::stringname)"
+
+.SS "void LuaTable::addField_Number (std::stringname, \fBLuaNumber\fPnum)"
+
+.SS "void LuaTable::addField_Number (std::stringname, doublenum)"
+
+.SS "void LuaTable::addField_String (std::stringname, std::stringstr)"
+
+.SS "void LuaTable::addField_String (std::stringname, \fBLuaString\fPstr)"
+
+.SS "void LuaTable::addField_Table (std::stringname, \fBLuaTable\fP *table)"
+
+.SS "void LuaTable::addIndex_Boolean (intindex, \fBLuaBoolean\fPb)"
+
+.SS "void LuaTable::addIndex_Boolean (intindex, boolb)"
+
+.SS "void LuaTable::addIndex_Function (intindex, \fBLuaFunction\fP *func)"
+
+.SS "void LuaTable::addIndex_Nil (intindex, \fBLuaNil\fPnil)"
+
+.SS "void LuaTable::addIndex_Nil (intindex)"
+
+.SS "void LuaTable::addIndex_Number (intindex, \fBLuaNumber\fPnum)"
+
+.SS "void LuaTable::addIndex_Number (intindex, doublenum)"
+
+.SS "void LuaTable::addIndex_String (intindex, std::stringstr)"
+
+.SS "void LuaTable::addIndex_String (intindex, \fBLuaString\fPstr)"
+
+.SS "void LuaTable::addIndex_Table (intindex, \fBLuaTable\fP *table)"
+
+.SS "std::string LuaTable::getName ()"
+
+.SS "void LuaTable::globalize (lua_State *L, std::stringname)"
+
+.SS "void LuaTable::push (lua_State *L)"
+
+.SS "void LuaTable::setMetatable (std::stringp_metatable)"
+
+.SS "void LuaTable::setMetatable (\fBLuaTable\fPmeta)"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libluawrap from the source code\&.

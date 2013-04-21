@@ -22,24 +22,34 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #define LUA_FUNCTION_WRAP
 #include <lua_defs.h>
 
+/**
+  \file lua_function.h
+  \author Thomas Maurice
+  
+  \class LuaFunction
+  \brief Lua functions
+  
+  This class is used to exchange functions between C++ and Lua.
+*/
+
 class LuaFunction
 {
   public:
-    LuaFunction(std::string n = "");
+    LuaFunction(std::string n = ""); //!< A constructor with the name of the function
     
-    void setName(std::string n);
-    void setFunction(int (*f)(lua_State*));
+    void setName(std::string n); //!< Changes the name of the function
+    void setFunction(int (*f)(lua_State*)); //!< Changes the function pointer
     
-    std::string getName();
-    int (* getFunction(void))(lua_State*);
+    std::string getName(); //!< Returns the name of the function
+    int (* getFunction(void))(lua_State*); //!< Returns the pointer on the function
     
-    void globalize(lua_State* L);
-    void globalize(lua_State* L, std::string n);
-    void push(lua_State* L);
+    void globalize(lua_State* L); //!< Globalize the function with it's given name
+    void globalize(lua_State* L, std::string n); //!< Globalize the function with a given name
+    void push(lua_State* L); //!< Pushes the function onto the top of the Lua stack
     
-  protected:
-    int (*func)(lua_State*);
-    std::string name;
+  private:
+    int (*func)(lua_State*); //!< The pointer on the function
+    std::string name; //!< The name of the function
     
 };
 

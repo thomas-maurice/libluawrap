@@ -89,7 +89,6 @@ int main(int argc, char** argv)
     if(erred)
         std::cout << "Lua error: " << luaL_checkstring(l, -1) << std::endl;
   
-  
     if(num.getFromLua(l, "fooint"))
       cout << num.getDouble() << endl;
     else

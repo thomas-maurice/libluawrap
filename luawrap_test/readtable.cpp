@@ -18,16 +18,6 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 */
 
-#ifndef LUA_DEBUG
-#define LUA_DEBUG
-
-/**
-  \file lua_debug.h
-  \author Thomas Maurice
-  
-  Definition of a debug function, stackDump, from lua-users.org
-*/
-
 extern "C"
 {
   #include <lua.h>
@@ -36,8 +26,33 @@ extern "C"
 }
 
 #include <iostream>
-#include <stdio.h>
+#include <sstream>
+#include <cstdlib>
+#include <libluawrap.h>
 
-void stackDump (lua_State *L); //!< Dumps the Lua stack
+using namespace std;
 
-#endif
+int main(int argc, char** argv)
+{
+  if(argc != 3) {
+    cout << "Syntax : " << argv[0] << " <testscript.lua> <tablename>" <<endl;
+    return EXIT_FAILURE;
+  }
+		
+		
+  print_luawrap_version();
+
+  lua_State * l = luaL_newstate();
+  luaL_openlibs(l);
+    
+  int erred = luaL_dofile(l, argv[1]);
+  if(erred)
+    std::cout << "Lua error: " << luaL_checkstring(l, -1) << std::endl;
+  
+  LuaTableElement conf= LuaWrap::readTableFromLua(l, argv[2]);
+  conf.dump();
+    
+  lua_close(l);
+
+  return 0;
+}

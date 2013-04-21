@@ -22,20 +22,31 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #define LUA_BOOLEAN_WRAP
 #include <lua_defs.h>
 
+/**
+  \file lua_bool.h
+  \author Thomas Maurice
+  
+  \class LuaBoolean
+  \brief Lua booleans
+  
+  This class is used to exchange boolean variables between C++ and Lua.
+  You can push them into a lua context as well as reading them from a lua context.
+*/
+
 class LuaBoolean
 {
   public:
-    LuaBoolean(bool b = true);
-    void set(bool b);
-    bool get();
-    void push(lua_State* L);
+    LuaBoolean(bool b = true); //!< Creates a LuaBoolean variable
+    void set(bool b); //!< Changes the value of the variable
+    bool get(); //!< Returns the current value of the variable
+    void push(lua_State* L); //!< Pushes the value of the boolean onto the lua stack
     
-    void globalize(lua_State* L, std::string name);
+    void globalize(lua_State* L, std::string name); //!< Register the value of the boolean within a lua context with the given name
     
-    bool getFromLua(lua_State* L, std::string varname);
+    bool getFromLua(lua_State* L, std::string varname); //!< Loads a value in the variable from the one existing in lua
     
-  protected:
-    bool value;
+  private:
+    bool value; //!< The value of the boolean
 };
 
 #endif

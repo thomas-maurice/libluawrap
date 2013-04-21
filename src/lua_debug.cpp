@@ -20,6 +20,11 @@
 
 #include <lua_debug.h>
 
+/**
+  Dumps the Lua stack of the given Lua context, useful to debug programs
+  
+  \param[in] L The lua context
+*/
 void stackDump(lua_State *L)
 {
   int i;

@@ -1,0 +1,101 @@
+.TH "LuaWrap" 3 "Sun Apr 21 2013" "Version 0.3" "libluawrap" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LuaWrap \- 
+.PP
+Misc class to store useful functions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <lua_wrap\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLuaWrap\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBisNil\fP (lua_State *L, std::string varname)"
+.br
+.RI "\fITest if a variable is nil\&. \fP"
+.ti -1c
+.RI "static \fBLuaTableElement\fP \fBreadTableFromLua\fP (lua_State *L, std::string var)"
+.br
+.RI "\fIReads a table from Lua\&. \fP"
+.ti -1c
+.RI "static lua_State * \fBnewLuaContext\fP ()"
+.br
+.RI "\fIReturns a new Lua context\&. \fP"
+.ti -1c
+.RI "static void \fBcloseContext\fP (lua_State *L)"
+.br
+.RI "\fIClose a Lua context\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Misc class to store useful functions\&. 
+
+Functions will be stored here and accessible with LuaWrap::Function 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LuaWrap::LuaWrap ()\fC [inline]\fP"
+Useless constructor 
+.SH "Member Function Documentation"
+.PP 
+.SS "void LuaWrap::closeContext (lua_State *L)\fC [static]\fP"
+
+.PP
+Close a Lua context\&. Closes a Lua context
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The context to close 
+.RE
+.PP
+
+.SS "bool LuaWrap::isNil (lua_State *L, std::stringvarname)\fC [static]\fP"
+
+.PP
+Test if a variable is nil\&. Test if a variable is nil\&. This won't work with table members\&. For instance, you cannot test if foo\&.bar is nil\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The lua context 
+.br
+\fIvarname\fP The name of the variable you want to test
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the variable is nil\&. 
+.RE
+.PP
+
+.SS "lua_State * LuaWrap::newLuaContext ()\fC [static]\fP"
+
+.PP
+Returns a new Lua context\&. Returns a new Lua context 
+.SS "\fBLuaTableElement\fP LuaWrap::readTableFromLua (lua_State *L, std::stringvar)\fC [static]\fP"
+
+.PP
+Reads a table from Lua\&. Reads a table and all its sub members from Lua\&. If the table does not exist, then an empty table shall be returned\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIL\fP The Lua context 
+.br
+\fIvar\fP The name of the table you want to read 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libluawrap from the source code\&.

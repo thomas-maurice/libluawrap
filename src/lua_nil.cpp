@@ -18,18 +18,40 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 */
 
+/**
+  \file lua_nil.cpp
+  \author Thomas Maurice
+  
+  Implementation of the nil value
+*/
+
 #include <lua_nil.h>
 
+/**
+  Default constructor, very simple : does nothing. Just create a LuaNil object.
+*/
 LuaNil::LuaNil()
 {
 
 }
 
+/**
+  Pushes the nil value onto the top of the stack. This can be used to return arguments
+  from a Lua function.
+  
+  \param[in, out] L The lua context
+*/
 void LuaNil::push(lua_State* L)
 {
 	lua_pushnil(L);
 }
 
+/**
+  Globalizes a nil value with a given name within a Lua context.
+  
+  \param[in, out] L The lua context
+  \param[in] name The name under which the variable shall be registered
+*/
 void LuaNil::globalize(lua_State* L, std::string name)
 {
   lua_pushnil(L);

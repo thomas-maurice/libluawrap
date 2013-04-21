@@ -20,17 +20,32 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 #include <lua_number.h>
 
+/**
+  \param[in] v The initial value
+*/
 LuaNumber::LuaNumber(double v)
 {
   value = v;
 }
 
+/**
+  Registers the variable in a Lua context
+  
+  \param[in, out] L The lua context
+  \param[in] name The name of the variable
+*/
 void LuaNumber::globalize(lua_State* L, std::string name)
 {
   lua_pushnumber(L, value);
   lua_setglobal(L, name.c_str());
 }
 
+/**
+  Pushes the variable on the top of the stack, this is used to return from Lua
+  functions.
+  
+  \param[in] L The lua context
+*/
 void LuaNumber::push(lua_State* L)
 {
 	lua_pushnumber(L, value);
@@ -56,6 +71,13 @@ double LuaNumber::get()
 	return value;
 }
 
+/**
+  Loads the value from the Lua context into the variable. If the value exists, this
+  function will return true, false otherwise. The value will be stored into the object.
+  
+  \param[in, out] L The lua context
+  \param[in] varname The name of the variable to load
+*/
 bool LuaNumber::getFromLua(lua_State* L, std::string varname)
 {
   lua_getglobal(L, varname.c_str());

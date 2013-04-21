@@ -22,20 +22,30 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #define LUA_STRING_WRAP
 #include <lua_defs.h>
 
+/**
+  \file lua_string.h
+  \author Thomas Maurice
+  
+  \class LuaString
+  \brief Lua Strings
+  
+  This class is used to exchange string variables between C++ and Lua.
+*/
+
 class LuaString
 {
   public:
-    LuaString(std::string str = "");
-    void set(std::string s);
-    std::string get();
+    LuaString(std::string str = ""); //!< Creates a new string object
+    void set(std::string s); //!< Changes the value of the string
+    std::string get(); //!< Returns the value of the string
     
-    void globalize(lua_State* L, std::string name);
-    void push(lua_State* L);
+    void globalize(lua_State* L, std::string name);//!< Registers the variable in the Lua context
+    void push(lua_State* L);//!< Pushes the variable on the top of the stack
     
-    bool getFromLua(lua_State* L, std::string varname);
+    bool getFromLua(lua_State* L, std::string varname); //!< Reads the value from Lua
     
-  protected:
-    std::string value;
+  private:
+    std::string value; //!< The value of the string
 };
 
 #endif

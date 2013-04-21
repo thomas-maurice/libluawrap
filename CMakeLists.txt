@@ -6,6 +6,8 @@ PROJECT(libluawrap)
 
 INCLUDE(FindPkgConfig)
 
+INCLUDE(cmake/FindGZIP.cmake)
+
 IF(NOT PKG_CONFIG_FOUND)
 	message(FATAL_ERROR "You need to install pkg-config. Exiting.")
 ENDIF()
@@ -20,11 +22,25 @@ ADD_DEFINITIONS(-Wall -O2 -s)
 
 SET(BINARY_OUTPUT_PATH ${PROJECT_BINARY_DIR})
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
+
+SET(CMAKE_CXX_FLAGS "-fPIC")
+
 INCLUDE_DIRECTORIES("include" "include/libluawrap" ${LUA_INCLUDE_DIRS})
 LINK_DIRECTORIES(${LUA_LIBRARY_DIRS} ${LIBRARY_OUTPUT_PATH})
 message(${LUA_LIBRARIES})
 SET(MAJORV "0")
 SET(MINORV "2")
+
+SET(MAN_PAGES "man/libluawrap.LuaBoolean.3"
+              "man/libluawrap.LuaFunction.3"
+              "man/libluawrap.LuaNil.3"
+              "man/libluawrap.LuaNumber.3"
+              "man/libluawrap.LuaString.3"
+              "man/libluawrap.LuaWrap.3"
+              "man/libluawrap.LuaTable.3"
+              "man/libluawrap.LuaTableElement.3")
+
+INCLUDE(cmake/BuildMan.cmake)
 
 # Configuration des fichiers sources
 # Lecture de tout les .cpp et .h
@@ -65,9 +81,20 @@ ADD_EXECUTABLE(
 	luawrap_test/main.cpp
 )
 
+ADD_EXECUTABLE(
+	readtable
+	luawrap_test/readtable.cpp
+)
+
 # Link la lib dynamique et Lua au programme de test
 TARGET_LINK_LIBRARIES(
 	luawrap_test
+	luawrap
+	${LUA_LIBRARIES}
+)
+# Link la lib dynamique et Lua au programme de test
+TARGET_LINK_LIBRARIES(
+	readtable
 	luawrap
 	${LUA_LIBRARIES}
 )
