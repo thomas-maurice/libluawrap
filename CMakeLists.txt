@@ -8,6 +8,8 @@ INCLUDE(FindPkgConfig)
 
 INCLUDE(cmake/FindGZIP.cmake)
 
+set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "/home/thomas/git-repositories/lua/build/foo/lib")
+
 IF(NOT PKG_CONFIG_FOUND)
 	message(FATAL_ERROR "You need to install pkg-config. Exiting.")
 ENDIF()
@@ -27,7 +29,7 @@ SET(CMAKE_CXX_FLAGS "-fPIC")
 
 INCLUDE_DIRECTORIES("include" "include/libluawrap" ${LUA_INCLUDE_DIRS})
 LINK_DIRECTORIES(${LUA_LIBRARY_DIRS} ${LIBRARY_OUTPUT_PATH})
-message(${LUA_LIBRARIES})
+
 SET(MAJORV "0")
 SET(MINORV "2")
 
@@ -86,15 +88,28 @@ ADD_EXECUTABLE(
 	luawrap_test/readtable.cpp
 )
 
+ADD_EXECUTABLE(
+	basic_export
+	luawrap_test/basic_export.cpp
+)
+
 # Link la lib dynamique et Lua au programme de test
 TARGET_LINK_LIBRARIES(
 	luawrap_test
 	luawrap
 	${LUA_LIBRARIES}
 )
+
 # Link la lib dynamique et Lua au programme de test
 TARGET_LINK_LIBRARIES(
 	readtable
+	luawrap
+	${LUA_LIBRARIES}
+)
+
+# Link la lib dynamique et Lua au programme de test
+TARGET_LINK_LIBRARIES(
+  basic_export
 	luawrap
 	${LUA_LIBRARIES}
 )

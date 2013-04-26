@@ -36,7 +36,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   C++ and Lua. With this lib it is more easy to export tables, datas and so on
   from C++ to Lua as well as reading data, such as complex tables, from Lua to C++.
   
-  \include main.cpp
+  Here is a basic example to export variables to Lua
+  \include basic_export.cpp
 */
 
 extern "C"
