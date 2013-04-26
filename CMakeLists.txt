@@ -93,6 +93,10 @@ ADD_EXECUTABLE(
 	luawrap_test/basic_export.cpp
 )
 
+ADD_DEPENDENCIES(readtable libluawrap)
+ADD_DEPENDENCIES(basic_export libluawrap)
+ADD_DEPENDENCIES(luawrap_test libluawrap)
+
 # Link la lib dynamique et Lua au programme de test
 TARGET_LINK_LIBRARIES(
 	luawrap_test
