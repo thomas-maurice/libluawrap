@@ -38,6 +38,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   
   Here is a basic example to export variables to Lua
   \include basic_export.cpp
+  
+  Here is a basic example on how to read tables (for config file for example)
+  \include readtable.cpp
 */
 
 extern "C"
