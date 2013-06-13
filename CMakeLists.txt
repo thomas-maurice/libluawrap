@@ -8,7 +8,7 @@ INCLUDE(FindPkgConfig)
 
 INCLUDE(cmake/FindGZIP.cmake)
 
-set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "/home/thomas/git-repositories/lua/build/foo/lib")
+SET(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "/home/thomas/git-repositories/lua/build/foo/lib")
 
 IF(NOT PKG_CONFIG_FOUND)
 	message(FATAL_ERROR "You need to install pkg-config. Exiting.")
