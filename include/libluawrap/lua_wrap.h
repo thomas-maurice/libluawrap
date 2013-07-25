@@ -40,6 +40,8 @@ class LuaWrap
     static bool isNil(lua_State* L, std::string varname); //!< Test if a variable is nil
     static LuaTableElement readTableFromLua(lua_State *L, std::string var); //!< Reads a table from Lua
     static lua_State* newLuaContext(); //!< Returns a new Lua context
+    static LuaTableElement getTableOnTop(lua_State* L, int key, int idx);
+    static LuaTableElement getTableOnTop(lua_State* L, std::string key, int idx);
     static void closeContext(lua_State* L); //!< Close a Lua context
 };
 

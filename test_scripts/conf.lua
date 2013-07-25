@@ -15,5 +15,6 @@
 conf = {
   test = {a = "a", b = "c", c={z="A"}},
   test2 = 18,
-  unbool = true
+  unbool = true,
+	arr = {'a', 'b', 'c'}
 }

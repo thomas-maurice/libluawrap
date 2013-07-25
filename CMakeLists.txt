@@ -14,7 +14,7 @@ IF(NOT PKG_CONFIG_FOUND)
 	message(FATAL_ERROR "You need to install pkg-config. Exiting.")
 ENDIF()
 
-pkg_check_modules(LUA REQUIRED lua5.2)
+pkg_check_modules(LUA REQUIRED lua)
 
 IF(NOT LUA_FOUND)
 	message(FATAL_ERROR "You need to install lua5.2. Exiting.")
@@ -93,9 +93,15 @@ ADD_EXECUTABLE(
 	luawrap_test/basic_export.cpp
 )
 
+ADD_EXECUTABLE(
+	object
+	luawrap_test/object.cpp
+)
+
 ADD_DEPENDENCIES(readtable libluawrap)
 ADD_DEPENDENCIES(basic_export libluawrap)
 ADD_DEPENDENCIES(luawrap_test libluawrap)
+ADD_DEPENDENCIES(object libluawrap)
 
 # Link la lib dynamique et Lua au programme de test
 TARGET_LINK_LIBRARIES(
@@ -113,6 +119,13 @@ TARGET_LINK_LIBRARIES(
 
 # Link la lib dynamique et Lua au programme de test
 TARGET_LINK_LIBRARIES(
+	object
+	luawrap
+	${LUA_LIBRARIES}
+)
+
+# Link la lib dynamique et Lua au programme de test
+TARGET_LINK_LIBRARIES(
   basic_export
 	luawrap
 	${LUA_LIBRARIES}
@@ -123,6 +136,7 @@ TARGET_LINK_LIBRARIES(
 	libluawrap
 	${LUA_LIBRARIES}
 )
+
 
 # Change le nom de la lib statique
 SET_TARGET_PROPERTIES(

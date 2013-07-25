@@ -59,6 +59,12 @@ class LuaTableElement
     void setKey(std::string k); //!< Changes the key
     
     void addChildren(LuaTableElement e); //!< Adds a children to the curent table
+    void addChildren(int (*f)(lua_State*), std::string name); //!< Adds a named function as a children
+    void addChildren(std::string s, std::string name); //!< Adds a named string as a children
+    void addChildren(int i, std::string name); //!< Adds a named int as a children
+    void addChildren(double d, std::string name); //!< Adds a named double as a children
+    void addChildren(float f, std::string name); //!< Adds a named float as a children
+    void addChildren(bool b, std::string name); //!< Adds a named boolean as a children
     
     void set(LuaNumber num); //!< Changes the value to a Number
     void set(LuaString str); //!< Changes the value to a String 

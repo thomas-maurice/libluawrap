@@ -3,8 +3,8 @@
 
 using namespace std;
 /* Functions used to read recursivelty from Lua */
-static LuaTableElement getTableOnTop(lua_State* L, int key, int idx);
-static LuaTableElement getTableOnTop(lua_State* L, std::string key, int idx);
+//static LuaTableElement getTableOnTop(lua_State* L, int key, int idx);
+//static LuaTableElement getTableOnTop(lua_State* L, std::string key, int idx);
 
 /**
   Test if a variable is nil. This won't work with table members. For instance, you cannot
@@ -23,7 +23,7 @@ bool LuaWrap::isNil(lua_State* L, std::string varname)
   return false;
 }
 
-static LuaTableElement getTableOnTop(lua_State* L, std::string key, int idx) {
+LuaTableElement LuaWrap::getTableOnTop(lua_State* L, std::string key, int idx) {
   LuaTableElement result(key);
 
   if(lua_isnil(L, -1))
@@ -63,9 +63,9 @@ static LuaTableElement getTableOnTop(lua_State* L, std::string key, int idx) {
         element.setNil();
       } else if(lua_istable(L, idx-1)) {
         if(string_key)
-          element = getTableOnTop(L, skey, idx);
+          element = LuaWrap::getTableOnTop(L, skey, idx);
         else
-          element = getTableOnTop(L, ikey, idx);
+          element = LuaWrap::getTableOnTop(L, ikey, idx);
       }
       result.addChildren(element);
     }
@@ -75,7 +75,7 @@ static LuaTableElement getTableOnTop(lua_State* L, std::string key, int idx) {
   return result;
 }
 
-static LuaTableElement getTableOnTop(lua_State* L, int key, int idx) {
+LuaTableElement LuaWrap::getTableOnTop(lua_State* L, int key, int idx) {
   LuaTableElement result(key);
 
   if(lua_isnil(L, -1))
@@ -115,9 +115,9 @@ static LuaTableElement getTableOnTop(lua_State* L, int key, int idx) {
         element.setNil();
       } else if(lua_istable(L, idx-1)) {
         if(string_key)
-          element = getTableOnTop(L, skey, idx);
+          element = LuaWrap::getTableOnTop(L, skey, idx);
         else
-          element = getTableOnTop(L, ikey, idx);
+          element = LuaWrap::getTableOnTop(L, ikey, idx);
       }
       result.addChildren(element);
     }

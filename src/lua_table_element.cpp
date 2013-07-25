@@ -102,6 +102,7 @@ void LuaTableElement::set(int (*f)(lua_State*)) {
   type = FUNCTION;
   func_value = f;
 }
+
 /**
   Sets the value of the element as a function value
 */
@@ -161,6 +162,96 @@ void LuaTableElement::set(LuaNil n) {
 void LuaTableElement::addChildren(LuaTableElement e) {
   type = TABLE;
   children.push_back(e);
+}
+
+/**
+  Add a children named function to the LuaTableElement. The type will be changed to
+  **TABLE**. Every element added will be a subelement of a table. For example
+  if the base table is named 'foo' and the element we add is 'bar', it will
+  be accessed by foo.bar in Lua.
+  
+  \param[in] f a pointer on the function
+  \param[in] name The name of the function
+*/
+void LuaTableElement::addChildren(int (*f)(lua_State*), std::string name) {
+  LuaTableElement e(name);
+  e.set(f);
+  addChildren(e);
+}
+
+/**
+  Add a children named string to the LuaTableElement. The type will be changed to
+  **TABLE**. Every element added will be a subelement of a table. For example
+  if the base table is named 'foo' and the element we add is 'bar', it will
+  be accessed by foo.bar in Lua.
+  
+  \param[in] s the string
+  \param[in] name The name of the function
+*/
+void LuaTableElement::addChildren(std::string s, std::string name) {
+  LuaTableElement e(name);
+  e.set(s);
+  addChildren(e);
+}
+
+/**
+  Add a children named integer to the LuaTableElement. The type will be changed to
+  **TABLE**. Every element added will be a subelement of a table. For example
+  if the base table is named 'foo' and the element we add is 'bar', it will
+  be accessed by foo.bar in Lua.
+  
+  \param[in] i the integer
+  \param[in] name The name of the function
+*/
+void LuaTableElement::addChildren(int i, std::string name) {
+  LuaTableElement e(name);
+  e.set(i);
+  addChildren(e);
+}
+
+/**
+  Add a children named double to the LuaTableElement. The type will be changed to
+  **TABLE**. Every element added will be a subelement of a table. For example
+  if the base table is named 'foo' and the element we add is 'bar', it will
+  be accessed by foo.bar in Lua.
+  
+  \param[in] d the double
+  \param[in] name The name of the function
+*/
+void LuaTableElement::addChildren(double d, std::string name) {
+  LuaTableElement e(name);
+  e.set(d);
+  addChildren(e);
+}
+
+/**
+  Add a children named float to the LuaTableElement. The type will be changed to
+  **TABLE**. Every element added will be a subelement of a table. For example
+  if the base table is named 'foo' and the element we add is 'bar', it will
+  be accessed by foo.bar in Lua.
+  
+  \param[in] f the float
+  \param[in] name The name of the function
+*/
+void LuaTableElement::addChildren(float f, std::string name) {
+  LuaTableElement e(name);
+  e.set(f);
+  addChildren(e);
+}
+
+/**
+  Add a children named boolean to the LuaTableElement. The type will be changed to
+  **TABLE**. Every element added will be a subelement of a table. For example
+  if the base table is named 'foo' and the element we add is 'bar', it will
+  be accessed by foo.bar in Lua.
+  
+  \param[in] b the boolean
+  \param[in] name The name of the function
+*/
+void LuaTableElement::addChildren(bool b, std::string name) {
+  LuaTableElement e(name);
+  e.set(b);
+  addChildren(e);
 }
 
 /**
@@ -567,7 +658,7 @@ void LuaTableElement::dump() {
       children.at(i).dump();
     }
     cout << ")";
-  }
+	}
   else {
     switch(type) {
       case NUMBER:
