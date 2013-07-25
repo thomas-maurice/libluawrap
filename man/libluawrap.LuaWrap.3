@@ -1,4 +1,4 @@
-.TH "LuaWrap" 3 "Tue Jul 16 2013" "Version 0.3" "libluawrap" \" -*- nroff -*-
+.TH "LuaWrap" 3 "Thu Jul 25 2013" "Version 0.3" "libluawrap" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -34,6 +34,12 @@ Misc class to store useful functions\&.
 .br
 .RI "\fIReturns a new Lua context\&. \fP"
 .ti -1c
+.RI "static \fBLuaTableElement\fP \fBgetTableOnTop\fP (lua_State *L, int key, int idx)"
+.br
+.ti -1c
+.RI "static \fBLuaTableElement\fP \fBgetTableOnTop\fP (lua_State *L, std::string key, int idx)"
+.br
+.ti -1c
 .RI "static void \fBcloseContext\fP (lua_State *L)"
 .br
 .RI "\fIClose a Lua context\&. \fP"
@@ -59,6 +65,10 @@ Close a Lua context\&. Closes a Lua context
 \fIL\fP The context to close 
 .RE
 .PP
+
+.SS "\fBLuaTableElement\fP LuaWrap::getTableOnTop (lua_State *L, intkey, intidx)\fC [static]\fP"
+
+.SS "\fBLuaTableElement\fP LuaWrap::getTableOnTop (lua_State *L, std::stringkey, intidx)\fC [static]\fP"
 
 .SS "bool LuaWrap::isNil (lua_State *L, std::stringvarname)\fC [static]\fP"
 

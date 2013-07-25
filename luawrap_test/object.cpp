@@ -70,6 +70,13 @@ int splus(lua_State* L) {
 	return 0;
 }
 
+int snaffle_gc(lua_State *L) {
+	Snaffle** s = snaffle_check_snaffle(L);
+	// Free the ressources
+	delete *s;
+	return 0;
+}
+
 int do_snaffle(lua_State* L) {
 	Snaffle** s = snaffle_check_snaffle(L);
 	(*s)->doSnaffle();
@@ -104,6 +111,7 @@ int main(int argc, char** argv) {
 	table.addChildren(do_snaffle, "doSnaffle");
 	table.addChildren(get_snaffle, "getSnaffle");
 	table.addChildren(set_snaffle, "setSnaffle");
+	table.addChildren(snaffle_gc, "__gc");
 	table.addChildren(splus, "plus");
 	
 	table.globalize(L);

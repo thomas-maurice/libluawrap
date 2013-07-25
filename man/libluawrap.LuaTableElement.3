@@ -1,4 +1,4 @@
-.TH "LuaTableElement" 3 "Tue Jul 16 2013" "Version 0.3" "libluawrap" \" -*- nroff -*-
+.TH "LuaTableElement" 3 "Thu Jul 25 2013" "Version 0.3" "libluawrap" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -42,6 +42,30 @@ Lua Table Elements and therefore recursive tables\&.
 .RI "void \fBaddChildren\fP (\fBLuaTableElement\fP e)"
 .br
 .RI "\fIAdds a children to the curent table\&. \fP"
+.ti -1c
+.RI "void \fBaddChildren\fP (int(*f)(lua_State *), std::string name)"
+.br
+.RI "\fIAdds a named function as a children\&. \fP"
+.ti -1c
+.RI "void \fBaddChildren\fP (std::string s, std::string name)"
+.br
+.RI "\fIAdds a named string as a children\&. \fP"
+.ti -1c
+.RI "void \fBaddChildren\fP (int i, std::string name)"
+.br
+.RI "\fIAdds a named int as a children\&. \fP"
+.ti -1c
+.RI "void \fBaddChildren\fP (double d, std::string name)"
+.br
+.RI "\fIAdds a named double as a children\&. \fP"
+.ti -1c
+.RI "void \fBaddChildren\fP (float f, std::string name)"
+.br
+.RI "\fIAdds a named float as a children\&. \fP"
+.ti -1c
+.RI "void \fBaddChildren\fP (bool b, std::string name)"
+.br
+.RI "\fIAdds a named boolean as a children\&. \fP"
 .ti -1c
 .RI "void \fBset\fP (\fBLuaNumber\fP num)"
 .br
@@ -224,6 +248,84 @@ Adds a children to the curent table\&. Add a children to the \fBLuaTableElement\
 \fBParameters:\fP
 .RS 4
 \fIe\fP The element to add 
+.RE
+.PP
+
+.SS "void LuaTableElement::addChildren (int(*)(lua_State *)f, std::stringname)"
+
+.PP
+Adds a named function as a children\&. Add a children named function to the \fBLuaTableElement\fP\&. The type will be changed to \fBTABLE\fP\&. Every element added will be a subelement of a table\&. For example if the base table is named 'foo' and the element we add is 'bar', it will be accessed by foo\&.bar in Lua\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP a pointer on the function 
+.br
+\fIname\fP The name of the function 
+.RE
+.PP
+
+.SS "void LuaTableElement::addChildren (std::strings, std::stringname)"
+
+.PP
+Adds a named string as a children\&. Add a children named string to the \fBLuaTableElement\fP\&. The type will be changed to \fBTABLE\fP\&. Every element added will be a subelement of a table\&. For example if the base table is named 'foo' and the element we add is 'bar', it will be accessed by foo\&.bar in Lua\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP the string 
+.br
+\fIname\fP The name of the function 
+.RE
+.PP
+
+.SS "void LuaTableElement::addChildren (inti, std::stringname)"
+
+.PP
+Adds a named int as a children\&. Add a children named integer to the \fBLuaTableElement\fP\&. The type will be changed to \fBTABLE\fP\&. Every element added will be a subelement of a table\&. For example if the base table is named 'foo' and the element we add is 'bar', it will be accessed by foo\&.bar in Lua\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP the integer 
+.br
+\fIname\fP The name of the function 
+.RE
+.PP
+
+.SS "void LuaTableElement::addChildren (doubled, std::stringname)"
+
+.PP
+Adds a named double as a children\&. Add a children named double to the \fBLuaTableElement\fP\&. The type will be changed to \fBTABLE\fP\&. Every element added will be a subelement of a table\&. For example if the base table is named 'foo' and the element we add is 'bar', it will be accessed by foo\&.bar in Lua\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP the double 
+.br
+\fIname\fP The name of the function 
+.RE
+.PP
+
+.SS "void LuaTableElement::addChildren (floatf, std::stringname)"
+
+.PP
+Adds a named float as a children\&. Add a children named float to the \fBLuaTableElement\fP\&. The type will be changed to \fBTABLE\fP\&. Every element added will be a subelement of a table\&. For example if the base table is named 'foo' and the element we add is 'bar', it will be accessed by foo\&.bar in Lua\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIf\fP the float 
+.br
+\fIname\fP The name of the function 
+.RE
+.PP
+
+.SS "void LuaTableElement::addChildren (boolb, std::stringname)"
+
+.PP
+Adds a named boolean as a children\&. Add a children named boolean to the \fBLuaTableElement\fP\&. The type will be changed to \fBTABLE\fP\&. Every element added will be a subelement of a table\&. For example if the base table is named 'foo' and the element we add is 'bar', it will be accessed by foo\&.bar in Lua\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIb\fP the boolean 
+.br
+\fIname\fP The name of the function 
 .RE
 .PP
 
