@@ -1,0 +1,65 @@
+.TH "include/libluawrap/macros.h" 3 "Sat Jul 27 2013" "Version 0.3" "libluawrap" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/libluawrap/macros.h \- 
+.PP
+Definition of some useful macros\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBOBJ_TO_VOID\fP(obj, out)   void *out = (void*)obj;"
+.br
+.ti -1c
+.RI "#define \fBVOID_TO_OBJ\fP(vd, type, out)   type *out = (type*)vd;"
+.br
+.ti -1c
+.RI "#define \fBCHECK_UDATA\fP(Type, Func, Meta)"
+.br
+.ti -1c
+.RI "#define \fBCHECK_UDATA_H\fP(Type, Func)   Type * Func(lua_State * L, int i = 1);"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition of some useful macros\&. 
+
+\fBAuthor:\fP
+.RS 4
+Thomas Maurice 
+.RE
+.PP
+\fBVersion:\fP
+.RS 4
+0\&.3 
+.RE
+.PP
+
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define CHECK_UDATA(Type, Func, Meta)"
+\fBValue:\fP
+.PP
+.nf
+Type * Func(lua_State * L, int i) \
+    {\
+    void *ud = luaL_checkudata(L, i, Meta);\
+    luaL_argcheck(L, ud != NULL, i, std::string(std::string(Meta)+ 'expected')\&.c_str());\
+    return (Type*)ud;\
+  }
+.fi
+Creates a function that checks that the lua type is correct and return the good userdata pointer 
+.SS "#define CHECK_UDATA_H(Type, Func)   Type * Func(lua_State * L, int i = 1);"
+Creates a function declaration for the macro above 
+.SS "#define OBJ_TO_VOID(obj, out)   void *out = (void*)obj;"
+Convert an object into a pointer to void 
+.SS "#define VOID_TO_OBJ(vd, type, out)   type *out = (type*)vd;"
+Convert a pointer to void to a pointer to an object 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libluawrap from the source code\&.
