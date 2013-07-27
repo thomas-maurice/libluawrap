@@ -55,8 +55,6 @@ FILE(
 	src/*.cpp
 	include/*.h
 )
-
-
 # Fichiers OBJECT communs aux fichiers
 # de lib statique et dynamique
 ADD_LIBRARY(        
@@ -73,11 +71,23 @@ ADD_LIBRARY(
 	$<TARGET_OBJECTS:libluawrap_common>
 )
 
+SET_TARGET_PROPERTIES(
+	libluawrap
+	PROPERTIES
+	PREFIX ""
+)
+
 # Ajoute la lib statique a partir des fichiers OBJECT
 ADD_LIBRARY(        
 	libluawrap_static
 	STATIC
 	$<TARGET_OBJECTS:libluawrap_common>
+)
+
+SET_TARGET_PROPERTIES(
+	libluawrap_static
+	PROPERTIES
+	NAME "libluawrap"
 )
 
 # Création de l'éxecutable de test
@@ -91,10 +101,10 @@ ADD_EXECUTABLE(
 	luawrap_test/readtable.cpp
 )
 
-ADD_EXECUTABLE(
-	basic_export
-	luawrap_test/basic_export.cpp
-)
+#ADD_EXECUTABLE(
+#	basic_export
+#	luawrap_test/basic_export.cpp
+#)
 
 ADD_EXECUTABLE(
 	object
@@ -102,7 +112,7 @@ ADD_EXECUTABLE(
 )
 
 ADD_DEPENDENCIES(readtable libluawrap)
-ADD_DEPENDENCIES(basic_export libluawrap)
+##ADD_DEPENDENCIES(basic_export libluawrap)
 ADD_DEPENDENCIES(luawrap_test libluawrap)
 ADD_DEPENDENCIES(object libluawrap)
 
@@ -128,11 +138,11 @@ TARGET_LINK_LIBRARIES(
 )
 
 # Link la lib dynamique et Lua au programme de test
-TARGET_LINK_LIBRARIES(
-  basic_export
-	luawrap
-	${LUA_LIBRARIES} ${LUA52_LIBRARIES}
-)
+#TARGET_LINK_LIBRARIES(
+#	basic_export
+#	libluawrap
+#	${LUA_LIBRARIES} ${LUA52_LIBRARIES}
+#)
 
 # Link Lua à la lib dynamique
 TARGET_LINK_LIBRARIES(
