@@ -14,9 +14,12 @@ IF(NOT PKG_CONFIG_FOUND)
 	message(FATAL_ERROR "You need to install pkg-config. Exiting.")
 ENDIF()
 
-pkg_check_modules(LUA REQUIRED lua)
-
+pkg_check_modules(LUA lua)
 IF(NOT LUA_FOUND)
+	pkg_check_modules(LUA52 lua5.2)
+ENDIF()
+
+IF(NOT LUA_FOUND AND NOT LUA52_FOUND)
 	message(FATAL_ERROR "You need to install lua5.2. Exiting.")
 ENDIF()
 
@@ -27,8 +30,8 @@ SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
 SET(CMAKE_CXX_FLAGS "-fPIC")
 
-INCLUDE_DIRECTORIES("include" "include/libluawrap" ${LUA_INCLUDE_DIRS})
-LINK_DIRECTORIES(${LUA_LIBRARY_DIRS} ${LIBRARY_OUTPUT_PATH})
+INCLUDE_DIRECTORIES("include" "include/libluawrap" ${LUA_INCLUDE_DIRS} ${LUA52_INCLUDE_DIRS})
+LINK_DIRECTORIES(${LUA_LIBRARY_DIRS} ${LUA52_LIBRARY_DIRS} ${LIBRARY_OUTPUT_PATH})
 
 SET(MAJORV "0")
 SET(MINORV "2")
@@ -107,34 +110,34 @@ ADD_DEPENDENCIES(object libluawrap)
 TARGET_LINK_LIBRARIES(
 	luawrap_test
 	luawrap
-	${LUA_LIBRARIES}
+	${LUA_LIBRARIES} ${LUA52_LIBRARIES}
 )
 
 # Link la lib dynamique et Lua au programme de test
 TARGET_LINK_LIBRARIES(
 	readtable
 	luawrap
-	${LUA_LIBRARIES}
+	${LUA_LIBRARIES} ${LUA52_LIBRARIES}
 )
 
 # Link la lib dynamique et Lua au programme de test
 TARGET_LINK_LIBRARIES(
 	object
 	luawrap
-	${LUA_LIBRARIES}
+	${LUA_LIBRARIES} ${LUA52_LIBRARIES}
 )
 
 # Link la lib dynamique et Lua au programme de test
 TARGET_LINK_LIBRARIES(
   basic_export
 	luawrap
-	${LUA_LIBRARIES}
+	${LUA_LIBRARIES} ${LUA52_LIBRARIES}
 )
 
 # Link Lua à la lib dynamique
 TARGET_LINK_LIBRARIES(
 	libluawrap
-	${LUA_LIBRARIES}
+	${LUA_LIBRARIES} ${LUA52_LIBRARIES}
 )
 
 

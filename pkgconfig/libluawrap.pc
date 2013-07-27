@@ -6,5 +6,5 @@ includedir=${prefix}/include
 Name: libluawrap
 Description: A simple C++ Lua class wrapper/writer
 Version: 0.2
-Libs: -L${libdir} -lluawrap -llua5.2
+Libs: -L${libdir} -lluawrap -llua
 Cflags: -I${includedir} -I${includedir}/libluawrap

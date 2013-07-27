@@ -49,6 +49,7 @@ class Snaffle {
 		int entier;
 };
 
+CHECK_UDATA_H(Snaffle*, snaffle_check_snaffle); // Declaration
 CHECK_UDATA(Snaffle*, snaffle_check_snaffle, "Snaffle");
 
 int new_snaffle(lua_State* L)
@@ -105,6 +106,9 @@ int main(int argc, char** argv) {
   
   lua_State* L = LuaWrap::newLuaContext();
 	
+	Snaffle s;
+	s.setSnaffle("From C++");
+	
 	LuaTableElement table("Snaffle");
 	
 	table.addChildren(new_snaffle, "new");
@@ -116,7 +120,7 @@ int main(int argc, char** argv) {
 	
 	table.globalize(L);
   // Let's execute a file !
- 
+ 	
   int erred = luaL_dofile(L, argv[1]);
   if(erred)
     std::cout << "Lua error: " << luaL_checkstring(L, -1) << std::endl;

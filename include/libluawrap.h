@@ -63,36 +63,12 @@ extern "C"
 #include "libluawrap/lua_nil.h"
 #include "libluawrap/lua_wrap.h"
 #include "libluawrap/lua_table_element.h"
+#include "libluawrap/macros.h"
 
 /**
   \brief Displays a simple message to warn of which version of the library you
   are using
 */
 void print_luawrap_version();
-
-	#if defined (linux)
-		#define DllExport
-	#elif defined (WIN32)
-		#define DllExport __declspec(dllexport)
-	#endif
-	
-	// Utilisé pour convertir l'objet "obj" de type quelconque en
-	// un pointeur sur void "out"
-	#define OBJ_TO_VOID(obj, out) void *out = (void*)obj;
-	
-	// Utilisé pour convertir le pointeur sur void "vd" en un objet
-	// "obj" de type "type"
-	#define VOID_TO_OBJ(vd, type, out) type *out = (type*)vd;
-	
-	#define CHECK_UDATA(Type,Func,Meta) \
-	Type * Func(lua_State * L) \
-	{\
-    void *ud = luaL_checkudata(L, 1, Meta);\
-    luaL_argcheck(L, ud != NULL, 1, std::string(std::string(Meta)+ "expected").c_str());\
-    return (Type*)ud;\
-  }
-  
-  #define CHECK_UDATA_H(Type,Func) \
-	Type * Func(lua_State * L);
 
 #endif
